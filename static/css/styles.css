@@ -4,6 +4,11 @@ body {
   background-size: cover;
   }
 
+.row {
+  align-items: center
+  ;
+}
+
 #hero {
   
   width: 100%;
@@ -19,21 +24,9 @@ body {
   align-items: center;
 }
 
-#gallery{
-  align-items: center;
-}
-
 #hero-bottom {
   text-align: center;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 
 
 .container {
