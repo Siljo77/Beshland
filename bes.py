@@ -17,4 +17,4 @@ def about():
 def gallery():
     return render_template('gallery.html')
 
-app.run(debug=True, port=5002)
+app.run(debug=True)
