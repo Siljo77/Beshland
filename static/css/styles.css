@@ -1,14 +1,26 @@
+body {
+  min-height: 100vh;
+  background-image: url(../img/crnobijela.jpeg);
+  background-size: cover;
+  }
+
 #hero {
-  background: url("../img/crnobijela.jpeg") center / cover no-repeat, var(--bs-dark);
+  
   width: 100%;
   height: 100vh;
   color: #333;
 }
-#about{
-  background: url("../img/crnobijela.jpeg") center / cover no-repeat, var(--bs-dark);
+
+
+#about1 {
+  align-items: center;
 }
+#text .img {
+  align-items: center;
+}
+
 #gallery{
-  background: url("../img/crnobijela.jpeg") center / cover no-repeat, var(--bs-dark);
+  align-items: center;
 }
 
 #hero-bottom {
@@ -22,13 +34,14 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+
 .container {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 40px 20px 0 20px;
 }
 
 .container .box {

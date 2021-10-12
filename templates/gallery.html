@@ -1,41 +1,54 @@
 {% extends 'home.html' %}
+
 <body>
     {% block body %}
     <section id="gallery" class="d-flex flex-column justify-content-between">
         <div>
             <nav class="navbar navbar-light navbar-expand-md">
-                <div class="container-fluid"><a class="navbar-brand" style="font-size: 32px;font-family: Montserrat, sans-serif;" href="home">Beshland</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container-fluid"><a class="navbar-brand"
+                        style="font-size: 32px;font-family: Montserrat, sans-serif;" href="home">Beshland</a><button
+                        data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                            class="visually-hidden">Toggle navigation</span><span
+                            class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link active" href="about" style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="gallery" style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
-                            <li class="nav-item"><a class="nav-link" href="store" style="font-family: Montserrat, sans-serif;">STORE</a></li>
-                            <li class="nav-item"><a class="nav-link" href="workshop" style="font-family: Montserrat, sans-serif;">WORKSHOPS</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="about"
+                                    style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery"
+                                    style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
+                            <li class="nav-item"><a class="nav-link" href="store"
+                                    style="font-family: Montserrat, sans-serif;">STORE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="workshop"
+                                    style="font-family: Montserrat, sans-serif;">WORKSHOPS</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
-    <h1 class="text-center" data-aos="fade-up" data-aos-delay="100" data-aos-once="true" style="padding-top: 70px;font-size: 32px;font-family: Montserrat, sans-serif;">Photo Gallery</h1>
-    <div class="container">
-        <div class="box">
+            <h1 class="text-center" data-aos="fade-up" data-aos-delay="100" data-aos-once="true"
+                style="padding-top: 70px;font-size: 32px;font-family: Montserrat, sans-serif;">Photo Gallery</h1>
+        </div>
+        <div class="container">
+            <div class="box">
 
-            <div class="dream">
-                <img src="static/img/radione.jpeg">
-                <img src="static/img/case.jpeg">
-                <img src="static/img/puno_casa.jpeg">
-            </div>
+                <div class="dream">
+                    <img src="static/img/radione.jpeg">
+                    <img src="static/img/case.jpeg">
+                    <img src="static/img/puno_casa.jpeg">
+                </div>
 
-            <div class="dream">
-                <img src="static/img/bes.jpeg">
-                <img src="static/img/radionica_klinci.jpeg">
-                <img src="static/img/vaza.jpeg">
-            </div>
+                <div class="dream">
+                    <img src="static/img/bes.jpeg">
+                    <img src="static/img/radionica_klinci.jpeg">
+                    <img src="static/img/vaza.jpeg">
+                </div>
 
-            <div class="dream">
-                <img src="static/img/vaze.jpeg">
-                <img src="static/img/velika_zdjela.jpeg">
-                <img src="static/img/zdjela_gline.jpeg">
+                <div class="dream">
+                    <img src="static/img/vaze.jpeg">
+                    <img src="static/img/velika_zdjela.jpeg">
+                    <img src="static/img/zdjela_gline.jpeg">
+                </div>
             </div>
-    {% endblock %}
+            {% endblock %}
 </body>
+
 </html>
