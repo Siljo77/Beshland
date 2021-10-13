@@ -7,14 +7,17 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    name ='Welcome'
+    return render_template('home.html', name=name )
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    name ='About'
+    return render_template('about.html', name=name)
 
 @app.route('/gallery')
 def gallery():
-    return render_template('gallery.html')
+    name ='Photo Gallery'
+    return render_template('gallery.html', name=name)
 
 app.run(debug=True)
