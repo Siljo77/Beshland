@@ -20,4 +20,14 @@ def gallery():
     name ='Photo Gallery'
     return render_template('gallery.html', name=name)
 
+@app.route('/store')
+def shop():
+    name='Store'
+    return render_template('store.html', name=name)
+
+@app.route('/workshops')
+def workshops():
+    name='Workshops'
+    return render_template('workshops.html',name=name)
+
 app.run(debug=True)

@@ -1,7 +1,6 @@
 {% include 'links.html' %}
 <head>
     <section id="hero" class="d-flex flex-column justify-content-between">
-        <div id="hero-top">
             <nav class="navbar navbar-light navbar-expand-md">
                 <div class="container-fluid"><a class="navbar-brand"
                         style="font-size: 32px;font-family: Montserrat, sans-serif;" href="home">Beshland</a><button
@@ -16,21 +15,17 @@
                                     style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
                             <li class="nav-item"><a class="nav-link" href="store"
                                     style="font-family: Montserrat, sans-serif;">STORE</a></li>
-                            <li class="nav-item"><a class="nav-link" href="workshop"
+                            <li class="nav-item"><a class="nav-link" href="workshops"
                                     style="font-family: Montserrat, sans-serif;">WORKSHOPS</a></li>
-                        </ul>
-                        
+                        </ul>    
                     </div>
                 </div>
             </nav>
-        </div>
         <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
-         style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ name }}</h1>
+            style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ name }}</h1> 
 </head>
 <body>
-    
     {% block body %}
    
     {% endblock %}
 </body>
-</html>
