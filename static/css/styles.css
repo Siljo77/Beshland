@@ -9,7 +9,9 @@ body {
   width: 100%;
   color: #333;
 }
-
+section#hero.container{
+  margin-top: 450px;
+}
 
 .container {
   flex-direction: column;

@@ -37,4 +37,4 @@ def proba_galerija():
     name='Proba_Galerija'
     return render_template('proba_galerija.html',name=name, images=images)
 
-app.run(debug=True, port=5005)
+app.run(debug=True, port=5009)
