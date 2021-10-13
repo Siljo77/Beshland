@@ -17,8 +17,9 @@ def about():
 
 @app.route('/gallery')
 def gallery():
+    images = ["case.jpeg","klinci/jpeg","loncarstvo.jpg"]
     name ='Photo Gallery'
-    return render_template('gallery.html', name=name)
+    return render_template('gallery.html', name=name, images=images)
 
 @app.route('/store')
 def shop():
@@ -29,5 +30,11 @@ def shop():
 def workshops():
     name='Workshops'
     return render_template('workshops.html',name=name)
+
+@app.route('/proba_galerija')
+def proba_galerija():
+    images = ["case.jpeg","klinci.jpg","loncarstvo.jpg","puno_casa.jpeg","radione.jpeg","radionica_klinci.jpeg","vaza.jpeg","vaze.jpeg","velika_zdjela.jpeg","zdjela_gline.jpeg"]
+    name='Proba_Galerija'
+    return render_template('proba_galerija.html',name=name, images=images)
 
 app.run(debug=True)

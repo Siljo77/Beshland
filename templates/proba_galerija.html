@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+<body>
+    {% block body %}
+        <div class="container">
+            {% for image in images %}
+                {% if image in images %}
+            <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}" class="pulse animated"/></a>
+            
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+</body>
