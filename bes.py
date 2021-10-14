@@ -33,8 +33,10 @@ def workshops():
 
 @app.route('/proba_galerija')
 def proba_galerija():
-    images = ["case.jpeg","klinci.jpg","loncarstvo.jpg","puno_casa.jpeg","radione.jpeg","radionica_klinci.jpeg","vaza.jpeg","vaze.jpeg","velika_zdjela.jpeg","zdjela_gline.jpeg"]
+    images_row = ["zdjela_gline.jpeg","loncarstvo.jpg","klinci.jpg"]
+    images_row_1 = ["vaza.jpeg","radione.jpeg","radionica_klinci.jpeg"]
+    images_row_2 = ["vaze.jpeg","velika_zdjela.jpeg","case.jpeg"]
     name='Proba_Galerija'
-    return render_template('proba_galerija.html',name=name, images=images)
+    return render_template('proba_galerija.html',name=name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
 
 app.run(debug=True)
