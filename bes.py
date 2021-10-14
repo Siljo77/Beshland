@@ -36,7 +36,7 @@ def proba_galerija():
     images_row = ["zdjela_gline.jpeg","loncarstvo.jpg","klinci.jpg"]
     images_row_1 = ["vaza.jpeg","radione.jpeg","radionica_klinci.jpeg"]
     images_row_2 = ["vaze.jpeg","velika_zdjela.jpeg","case.jpeg"]
-    name='Proba_Galerija'
+    name='Proba Galerija'
     return render_template('proba_galerija.html',name=name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
 
-app.run(debug=True, port=5009)
+app.run(debug=True)
