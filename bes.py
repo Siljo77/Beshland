@@ -15,13 +15,12 @@ db = SQLAlchemy(app)
 class Friends(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    data_created = db.Columne(db.DateTime, nullable=False, default=datetime.utcnow)
+    data_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):  
         return '<Name %r>' % self.id
 
 
-subscribes = []
 
 @app.route('/')
 @app.route('/home')
