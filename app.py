@@ -6,20 +6,9 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_TRACK-MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/ivansijan'
 # Initialize the database
 db = SQLAlchemy(app)
-
-#Create db model
-class Friends(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    data_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-    def __repr__(self):  
-        return '<Name %r>' % self.id
-
 
 
 @app.route('/')
@@ -56,4 +45,5 @@ def workshops():
     return render_template('workshops.html', name=name)
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
