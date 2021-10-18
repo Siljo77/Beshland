@@ -1,36 +1,33 @@
-{% include 'links.html' %}
+{% include 'links' %}
+
 <head>
     <section id="hero" class="d-flex flex-column justify-content-between">
-        <div id="hero-top">
-            <nav class="navbar navbar-light navbar-expand-md">
-                <div class="container-fluid"><a class="navbar-brand"
-                        style="font-size: 32px;font-family: Montserrat, sans-serif;" href="home">Beshland</a><button
-                        data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
-                            class="visually-hidden">Toggle navigation</span><span
-                            class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link active" href="about"
-                                    style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="gallery"
-                                    style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
-                            <li class="nav-item"><a class="nav-link" href="store"
-                                    style="font-family: Montserrat, sans-serif;">STORE</a></li>
-                            <li class="nav-item"><a class="nav-link" href="workshop"
-                                    style="font-family: Montserrat, sans-serif;">WORKSHOPS</a></li>
-                        </ul>
-                        
-                    </div>
+        <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid"><a class="navbar-brand"
+                    style="font-size: 32px;font-family: Montserrat, sans-serif;" href="home">Beshland</a><button
+                    data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                        class="visually-hidden">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="about"
+                                style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery"
+                                style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
+                        <li class="nav-item"><a class="nav-link" href="store"
+                                style="font-family: Montserrat, sans-serif;">STORE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="workshops"
+                                style="font-family: Montserrat, sans-serif;">WORKSHOPS</a></li>
+                    </ul>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
         <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
-         style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ name }}</h1>
+            style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ name }}</h1>
 </head>
+
 <body>
-    
     {% block body %}
-   
+
     {% endblock %}
 </body>
-</html>
