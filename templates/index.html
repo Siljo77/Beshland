@@ -1,33 +1,32 @@
-{% include 'links' %}
-
-<head>
-    <section id="hero" class="d-flex flex-column justify-content-between">
-        <nav class="navbar navbar-light navbar-expand-md">
-            <div class="container-fluid"><a class="navbar-brand"
-                    style="font-size: 32px;font-family: Montserrat, sans-serif;" href="home">Beshland</a><button
-                    data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
-                        class="visually-hidden">Toggle navigation</span><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="about"
-                                style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery"
-                                style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
-                        <li class="nav-item"><a class="nav-link" href="store"
-                                style="font-family: Montserrat, sans-serif;">STORE</a></li>
-                        <li class="nav-item"><a class="nav-link" href="workshops"
-                                style="font-family: Montserrat, sans-serif;">WORKSHOPS</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
-            style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ name }}</h1>
-</head>
+{% extends 'base.html' %}
 
 <body>
     {% block body %}
-
+    <section id="hero">
+        <div class="container" style="margin-bottom: 50px; margin-top: 600px;">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center" data-aos="fade-up" data-aos-duration="350" data-aos-once="true"
+                        style="color: var(--bs-white);font-family: Montserrat, sans-serif;font-size: 22px;">
+                        Conntacts and News</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="pulse animated"
+                        style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">
+                        Telephone number: +38597315640</p>
+                    <p class="pulse animated"
+                        style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">email:
+                        mateja.sijan@gmail.com</p>
+                </div>
+                <div class="col">
+                    <p class="pulse animated"
+                        style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">
+                        Workshops from 01.01.2022 every Tuesday</p>
+                </div>
+            </div>
+        </div>
+    </section>
     {% endblock %}
 </body>

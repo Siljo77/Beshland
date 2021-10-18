@@ -10,18 +10,25 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@loca
 # Initialize the database
 db = SQLAlchemy(app)
 
-class User(db.Model):
+class Users(db.Model):
+    __tablename__="Users"
     id = db.Column(db.Integer,primary_key=True)
-    img = db.Column(db.Text, unique=True, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-    mimtyoe = db.Column(db.Text, nullable=False)
+    first_name = db.Column(db.String(40))
+    last_name = db.Column(db.String(40))
+    pet = db.Column(db.String(40))
+
+    def __init__(self,first_name,last_name,pet):
+        self.first_name=first_name
+        self.last_name=last_name
+        self.pet=pet
+        
     
 
 @app.route('/')
-@app.route('/home')
+@app.route('/index')
 def home():
     name = 'Welcome'
-    return render_template('home.html', name=name)
+    return render_template('index.html', name=name)
 
 
 @app.route('/about')
@@ -39,16 +46,21 @@ def gallery():
     return render_template('gallery.html', name=name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
 
 
-@app.route('/store')
-def shop():
-    name = 'Store'
-    return render_template('store.html', name=name)
+@app.route('/webshop')
+def webshop():
+    name = 'Webshop'
+    return render_template('webshop.html', name=name)
 
 
 @app.route('/workshops')
 def workshops():
     name = 'Workshops'
     return render_template('workshops.html', name=name)
+
+@app.route('/log_in', methods=['GET', 'POST'])
+def log_in():
+    name = 'LOG IN'
+    return render_template('log_in.html', name=name)
 
 
 if __name__ == '__main__':
