@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 <body>
-    {% block body %}
+{% block body %}
     <div class="container">
+        <h1>Error...</h1>
+        
+        <br></br>
+
+        {{ error_statment }}
+
+        <br></br>
+
         <form action="/submit" method="POST" >
             <div class="mb-3">
                 <input type ='first_name' class="form-control" id="exampleInputEmail1"
-                aria-="emailHelp" placeholder="First name" name="first_name" value="{{ first_name}}">
+                aria-="emailHelp" placeholder="First name" name="first_name" value="{{ first_name }}">
             </div>
             <div class="mb-3">
                 <input type ='last_name' class="form-control" id="exampleInputEmail1"
@@ -20,7 +28,8 @@
             <br>
             <button type="submit" class="btn btn-secundary">Submit</button>
         </form>
+
+    
     </div>
     {% endblock %}
 </body>
-</html>

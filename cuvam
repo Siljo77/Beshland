@@ -7,12 +7,12 @@ import smtplib
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/users'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/siljo'
 # Initialize the database
 db = SQLAlchemy(app)
 
-class User(db.Model):
-    __tablename__="User"
+class Users(db.Model):
+    __tablename__="Users"
     id = db.Column(db.Integer,primary_key=True)
     first_name = db.Column(db.String(40))
     last_name = db.Column(db.String(40))
@@ -23,7 +23,7 @@ class User(db.Model):
         self.last_name=last_name
         self.email=email
         
-
+subscribers = []
 
 @app.route('/')
 @app.route('/index')
@@ -60,32 +60,27 @@ def workshops():
 
 @app.route('/log_in', methods=['GET', 'POST'])
 def log_in():
-    name = "Log in"
+    name = 'Subscribe to my Beshland'
     return render_template('log_in.html', name=name)
 
-@app.route('/fail', methods=['GET', 'POST'])
-def fail():
-    name = "fail"
-    return render_template('fail.html', name=name)
+@app.route('/form', methods=["POST"])
+def form():
+    first_name = request.form.get("first_name")
+    last_name = request.form.get("last_name")
+    email = request.form.get("email")
 
-@app.route('/submit', methods=['GET', 'POST'])
-def submit():
-    if request.method == "POST":
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        email = request.form['email']
-
-        if not first_name or not last_name or not email:
-            error_statement = "ALL Form Fileds Required"
-            return render_template("fail.html")    
-    
-        user = User(first_name,last_name,email)
-        db.session.add(user)
-        db.session.commit()
+    if not first_name or not last_name or not email:
+        error_statment = "All form fields Requiered!"
+        return render_template("fail.html", error_statment=error_statment, first_name=first_name, last_name=last_name, email=email)
         
+    message = "You have beed subscribe to my email newslater"
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    server.login("ivan.sijan@gmail.com", "medvescak77")
+    server.sendmail("ivan.sijan@gmail.com",first_name,last_name,email,message)
 
-    return render_template('success.html', data=first_name)
-
+    subscribers.append(f"{first_name} {last_name} || {email}")
+    return render_template('form.html', first_name=first_name, last_name=last_name, email=email, subscribers=subscribers)
 
 
 if __name__ == '__main__':
