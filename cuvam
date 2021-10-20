@@ -76,7 +76,7 @@ def form():
     message = "You have beed subscribe to my email newslater"
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
-    server.login("ivan.sijan@gmail.com", "medvescak77")
+    server.login()
     server.sendmail("ivan.sijan@gmail.com",first_name,last_name,email,message)
 
     subscribers.append(f"{first_name} {last_name} || {email}")
@@ -85,3 +85,5 @@ def form():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+     user = login.query.filter_by(username = 'Pero').first()

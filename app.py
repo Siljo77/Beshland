@@ -1,23 +1,24 @@
-from os import error
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
-
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy 
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/login'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/users'
 # Initialize the database
 db = SQLAlchemy(app)
 
-class User(db.Model):
-    __tablename__="Login"
+class users(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    first_name = db.Column(db.String(40))
-    password = db.Column(db.String(40))
+    email = db.Column(db.String(40), nullable=False)
+    password = db.Column(db.String(40),nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self,email,password):
+    def __init__(self,email,password,):
          self.email=email
          self.password=password
+    
     
         
 @app.route('/')
@@ -53,20 +54,18 @@ def workshops():
     name = 'Workshops'
     return render_template('workshops.html', name=name)
 
+
 @app.route('/log_in', methods=['GET', 'POST'])
 def log_in():
     name = "Log in"
     return render_template('log_in.html', name=name)
 
-@app.route('/fail', methods=['GET', 'POST'])
-def fail():
-    name = "fail"
-    return render_template('fail.html', name=name)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     name = "Create new account"
     return render_template('register.html', name=name)
+
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
@@ -79,13 +78,14 @@ def submit():
             error_statement = "All Form Fileds Required"
             return render_template("fail.html",email=email, password=password,error_statement=error_statement)
 
-
-        user = User(email, password)
+    
+        user = users(email, password)
         db.session.add(user)
         db.session.commit()
         
 
-    return render_template('success.html')
+    
+        return render_template('success.html')
  
 
 if __name__ == '__main__':

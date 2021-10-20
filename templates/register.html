@@ -4,14 +4,10 @@
     <div class="container">
         {{ statment }}
         <br></br>
-        <form action="/register" method="POST" >
+        <form action="/submit" method="POST" >
             <div class="mb-3">
-                <input type ='first_name' class="form-control" id="exampleInputEmail1"
-                aria-="emailHelp" placeholder="First name" name="first_name" value="{{ first_name}}">
-            </div>
-            <div class="mb-3">
-                <input type ='last_name' class="form-control" id="exampleInputEmail1"
-                aria-="emailHelp" placeholder="Last name" name="last_name" value="{{ last_name }}">
+                <input type ='Username' class="form-control" id="exampleInputEmail1"
+                aria-="emailHelp" placeholder="Username" name="username" value="{{ username }}">
             </div>
             <div>
             <div class="mb-3">
@@ -20,13 +16,13 @@
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-                <input type ='password' class="form-control" id="exampleInputEmail1"
-                aria-="emailHelp" placeholder="password" name="password" value="{{ password }}">
+                <input type ='Password' class="form-control" id="exampleInputEmail1"
+                aria-="emailHelp" placeholder="Password" name="password" value="{{ password }}">
             </div>
             <br>
-            <button type="submit" class="btn btn-secundary">Submit</button>
+            <button type="submit" class="btn btn-secundary">CREATE</button>
             <br>
-            <button type="register" class="btn btn-secundary">Create Account</button>
+            <a href='/webshop' type="register" class="btn btn-secundary">Return to Webshop</a>
         </form>
     {% endblock %}
 </body>
