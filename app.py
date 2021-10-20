@@ -1,6 +1,6 @@
 from os import error
 from flask import Flask, render_template, request
-from  flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
@@ -12,12 +12,12 @@ db = SQLAlchemy(app)
 class User(db.Model):
     __tablename__="Login"
     id = db.Column(db.Integer,primary_key=True)
-    email = db.Column(db.String(40))
+    first_name = db.Column(db.String(40))
     password = db.Column(db.String(40))
 
     def __init__(self,email,password):
-        self.email=email
-        self.password=password
+         self.email=email
+         self.password=password
     
         
 @app.route('/')
@@ -63,10 +63,10 @@ def fail():
     name = "fail"
     return render_template('fail.html', name=name)
 
-@app.route('/create_account', methods=['GET', 'POST'])
-def create_account():
+@app.route('/register', methods=['GET', 'POST'])
+def register():
     name = "Create new account"
-    return render_template('create_account.html', name=name)
+    return render_template('register.html', name=name)
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
@@ -75,8 +75,8 @@ def submit():
         password = request.form['password']
 
 
-        if not email and not password :
-            error_statement = "ALL Form Fileds Required"
+        if not email or not password :
+            error_statement = "All Form Fileds Required"
             return render_template("fail.html",email=email, password=password,error_statement=error_statement)
 
 
@@ -90,3 +90,6 @@ def submit():
 
 if __name__ == '__main__':
     app.run(debug=True)
+        
+
+

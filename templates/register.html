@@ -4,7 +4,7 @@
     <div class="container">
         {{ statment }}
         <br></br>
-        <form action="/create_account" method="POST" >
+        <form action="/register" method="POST" >
             <div class="mb-3">
                 <input type ='first_name' class="form-control" id="exampleInputEmail1"
                 aria-="emailHelp" placeholder="First name" name="first_name" value="{{ first_name}}">
@@ -26,7 +26,7 @@
             <br>
             <button type="submit" class="btn btn-secundary">Submit</button>
             <br>
-            <button type="create_account" class="btn btn-secundary">Create Account</button>
+            <button type="register" class="btn btn-secundary">Create Account</button>
         </form>
     {% endblock %}
 </body>

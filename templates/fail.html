@@ -4,7 +4,7 @@
     <div class="container">
         {{ error_statement }}
         <br></br>
-            <form action="/create_account" method="POST" >
+            <form action="/register" method="POST" >
                 <div class="mb-3">
                     <input type ='email' class="form-control" id="exampleInputEmail1"
                     aria-="emailHelp" placeholder="Email Address" name="email" value="{{ email }}">
@@ -17,7 +17,7 @@
                 <br>
                 <button type="submit" class="btn btn-secundary">Submit</button>
                 <br>
-                <button type="create_account" class="btn btn-secundary">Create Account</button>
+                <button type="register" class="btn btn-secundary">Create Account</button>
             </form>
     </div>
     {% endblock %}
