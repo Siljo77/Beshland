@@ -1,30 +1,25 @@
 from os import error
 from flask import Flask, render_template, request
 from  flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-import smtplib
 
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/users'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/login'
 # Initialize the database
 db = SQLAlchemy(app)
 
 class User(db.Model):
-    __tablename__="User"
+    __tablename__="Login"
     id = db.Column(db.Integer,primary_key=True)
-    first_name = db.Column(db.String(40))
-    last_name = db.Column(db.String(40))
     email = db.Column(db.String(40))
+    password = db.Column(db.String(40))
 
-    def __init__(self,first_name,last_name,email):
-        self.first_name=first_name
-        self.last_name=last_name
+    def __init__(self,email,password):
         self.email=email
+        self.password=password
+    
         
-
-
 @app.route('/')
 @app.route('/index')
 def home():
@@ -68,25 +63,30 @@ def fail():
     name = "fail"
     return render_template('fail.html', name=name)
 
+@app.route('/create_account', methods=['GET', 'POST'])
+def create_account():
+    name = "Create new account"
+    return render_template('create_account.html', name=name)
+
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == "POST":
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
         email = request.form['email']
+        password = request.form['password']
 
-        if not first_name or not last_name or not email:
+
+        if not email and not password :
             error_statement = "ALL Form Fileds Required"
-            return render_template("fail.html")    
-    
-        user = User(first_name,last_name,email)
+            return render_template("fail.html",email=email, password=password,error_statement=error_statement)
+
+
+        user = User(email, password)
         db.session.add(user)
         db.session.commit()
         
 
-    return render_template('success.html', data=first_name)
-
-
+    return render_template('success.html')
+ 
 
 if __name__ == '__main__':
     app.run(debug=True)

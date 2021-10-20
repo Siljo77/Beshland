@@ -2,7 +2,18 @@
 <body>
     {% block body %}
     <div class="container">
-        <form action="/submit" method="POST" >
+        {{ statment }}
+        <br></br>
+        <form action="/create_account" method="POST" >
+            <div class="mb-3">
+                <input type ='first_name' class="form-control" id="exampleInputEmail1"
+                aria-="emailHelp" placeholder="First name" name="first_name" value="{{ first_name}}">
+            </div>
+            <div class="mb-3">
+                <input type ='last_name' class="form-control" id="exampleInputEmail1"
+                aria-="emailHelp" placeholder="Last name" name="last_name" value="{{ last_name }}">
+            </div>
+            <div>
             <div class="mb-3">
                 <input type ='email' class="form-control" id="exampleInputEmail1"
                 aria-="emailHelp" placeholder="Email Address" name="email" value="{{ email }}">
@@ -10,14 +21,13 @@
             </div>
             <div class="mb-3">
                 <input type ='password' class="form-control" id="exampleInputEmail1"
-                aria-="emailHelp" placeholder="Password" name="password" value="{{ password }}">
+                aria-="emailHelp" placeholder="password" name="password" value="{{ password }}">
             </div>
             <br>
             <button type="submit" class="btn btn-secundary">Submit</button>
             <br>
             <button type="create_account" class="btn btn-secundary">Create Account</button>
         </form>
-    </div>
     {% endblock %}
 </body>
 </html>
