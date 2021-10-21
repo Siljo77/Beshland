@@ -1,16 +1,34 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>Hello World</h1>
+<section id="hero">
+    <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+            style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">Welcome</h1>
+    <div class="container" style="margin-bottom: 50px; margin-top: 600px;">
+        <div class="row">
+            <div class="col">
+                <p class="text-center" data-aos="fade-up" data-aos-duration="350" data-aos-once="true"
+                    style="color: var(--bs-white);font-family: Montserrat, sans-serif;font-size: 22px;">
+                    Conntacts and News</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="pulse animated"
+                    style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">
+                    Telephone number: +38597315640</p>
+                <p class="pulse animated"
+                    style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">email:
+                    mateja.sijan@gmail.com</p>
+            </div>
+            <div class="col">
+                <p class="pulse animated"
+                    style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">
+                    Workshops from 01.01.2022 every Tuesday</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<p>This is my first webpage!!</p>
-
-<p>My name is {{ first_name }}</p>
-
-{% for topping in favorit_pizza%}
-
-{{ topping }}
-
-{% endfor %}
 
 {% endblock %}
