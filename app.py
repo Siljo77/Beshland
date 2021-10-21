@@ -1,95 +1,86 @@
-from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy 
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask import Flask, render_template, flash, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+
+
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = 'medvescak77'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/users'
 # Initialize the database
 db = SQLAlchemy(app)
 
 class users(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    email = db.Column(db.String(40), nullable=False)
-    password = db.Column(db.String(40),nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(100),nullable=False, unique=True )
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self,email,password,):
-         self.email=email
-         self.password=password
-    
-    
+    def __repr__(self):
+        return '<Name %r>' % self.name
         
+class UserForm(FlaskForm):
+    name = StringField("Name", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired()])                   
+    submit = SubmitField("Submit")        
+
+
+class NamerForm(FlaskForm):
+    name = StringField("What's Your Name", validators=[DataRequired()])                   
+    submit = SubmitField("Submit")
+
+@app.route('/add_user', methods=['GET', 'POST'])
+def add_user():
+    name = None
+    form = UserForm()
+    if form.validate_on_submit():
+        user = users.query.filter_by(email=form.email).first()
+        if user is None:
+            user = users(name=form.name.data, email=form.email.data)
+            db.session.add(user)
+            db.session.commit()
+        name = form.name.data
+        form.name.data = ''
+        form.email.data = ''
+        flash("User Submmitted Successfully")
+   
+    return render_template("add_user.html",form=form,name=name, our_users=our_users)
+
+
 @app.route('/')
 @app.route('/index')
-def home():
-    name = 'Welcome'
-    return render_template('index.html', name=name)
+def index():
+    first_name = "pizza"
+    favorit_pizza = ['paparoni', 'chese', 'ham']
+    return render_template('index.html',first_name=first_name, favorit_pizza=favorit_pizza)
 
 
-@app.route('/about')
-def about():
-    name = 'About'
-    return render_template('about.html', name=name)
+@app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
 
-
-@app.route('/gallery')
-def gallery():
-    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg"]
-    images_row_1 = ["vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg"]
-    images_row_2 = ["vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
-    name = 'Photo Gallery'
-    return render_template('gallery.html', name=name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
-
-
-@app.route('/webshop')
-def webshop():
-    name = 'Webshop'
-    return render_template('webshop.html', name=name)
-
-
-@app.route('/workshops')
-def workshops():
-    name = 'Workshops'
-    return render_template('workshops.html', name=name)
-
-
-@app.route('/log_in', methods=['GET', 'POST'])
-def log_in():
-    name = "Log in"
-    return render_template('log_in.html', name=name)
-
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    name = "Create new account"
-    return render_template('register.html', name=name)
-
-
-@app.route('/submit', methods=['GET', 'POST'])
-def submit():
-    if request.method == "POST":
-        email = request.form['email']
-        password = request.form['password']
-
-
-        if not email or not password :
-            error_statement = "All Form Fileds Required"
-            return render_template("fail.html",email=email, password=password,error_statement=error_statement)
-
-    
-        user = users(email, password)
-        db.session.add(user)
-        db.session.commit()
-        
-
-    
-        return render_template('success.html')
+@app.errorhandler(404)
+def page_not_found(e):
+     return render_template("404.html"), 404
  
+@app.errorhandler(500)
+def page_not_found(e):
+     return render_template("404.html"), 500
+ 
+@app.route('/name', methods=['GET', 'POST'])
+def name():
+    name = None
+    form = NamerForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+        flash("Form Submmitted Successfully")
+        
+    return render_template("name.html", name=name, form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
-        
-
-
