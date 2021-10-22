@@ -54,7 +54,7 @@
 
 {% for our_users in our_users %}
     {{ our_users.id }}. <a href ="{{url_for('update', id=our_users.id) }}">
-    {{ our_users.name }}</a> - {{ our_users.username }} - {{ our_users.email }} - {{ our_users.password }}<br/>
+    {{ our_users.name }}</a> - {{ our_users.username }} - {{ our_users.email }} <br/>
 
 {% endfor %}
 

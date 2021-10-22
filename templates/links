@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
 <link rel="stylesheet" href="/static/css/styles.css">
 <link rel="stylesheet" href="/static/css/lightbox.min.css">
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/bs-init.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bs-init.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-<script src="static/js/Lightbox-Gallery.js"></script>
-<script src="static/js/lightbox-plus-jquery.min.js"></script>
+<script src="/static/js/Lightbox-Gallery.js"></script>
+<script src="/static/js/lightbox-plus-jquery.min.js"></script>
 
 

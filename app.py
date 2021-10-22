@@ -90,7 +90,7 @@ class UserForm(FlaskForm):
     password_hash2 = PasswordField("Confirm Password", validators=[DataRequired()])                              
     submit = SubmitField("Submit")        
 
-#@app.route('/update/<int:id>', methods=['GET', 'POST'])
+
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
     form = UserForm()
@@ -122,8 +122,7 @@ class NamerForm(FlaskForm):
     name = StringField("What's Your Name", validators=[DataRequired()])                   
     submit = SubmitField("Submit")
 
-#@app.route('/user/add', methods=['GET', 'POST'])
-@app.route('/add_user', methods=['GET', 'POST'])
+@app.route('/user/add', methods=['GET', 'POST'])
 def add_user():
     name = None
     form = UserForm()
