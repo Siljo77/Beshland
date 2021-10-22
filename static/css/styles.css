@@ -39,10 +39,7 @@ section#hero.container{
   padding-top: 15px;
 }
 
-.grid h3{
-  text-align: end;
-}
-
-.grid h2{
-  text-align: start;
+.customer_logout_link{
+  color: black;
+  font-size: 20px ;
 }
