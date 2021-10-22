@@ -7,10 +7,10 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{url_for('user',name='Siljo')}}"
-                            style="font-family: Montserrat, sans-serif;">USER PROFILE</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url_for('name')}}"
-                            style="font-family: Montserrat, sans-serif;">NAME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}"
+                        style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('gallery')}}"
+                            style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
                     {% if current_user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{{url_for('dashboard')}}"
                                 style="font-family: Montserrat, sans-serif;">DASHBOARD</a></li>
@@ -26,5 +26,5 @@
             </div>
         </div>
     </nav>
-<section></section>
+</section>
     

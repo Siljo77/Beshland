@@ -21,7 +21,8 @@
 
     {% endfor %}
 {% else %}
-    <h1>User List</h1>
+    <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+        style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">CREATE ACCOUNT</h1>
     <br/>
     <form method="POST">
         {{ form.hidden_tag() }}

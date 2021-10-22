@@ -75,6 +75,22 @@ class LoginForm(FlaskForm):
 def index():
     name = "Welcome to Beshland"
     return render_template('index.html' , name=name)
+
+
+#Create About Page
+@app.route('/about')
+def about():
+    name = 'About'
+    return render_template('about.html', name=name)
+
+
+#Create Gallery Page
+@app.route('/gallery')
+def gallery():
+    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg"]
+    images_row_1 = ["vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg"]
+    images_row_2 = ["vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
+    return render_template('gallery.html', images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
     
     
 #Create and Add User Page
@@ -159,11 +175,6 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/user/<name>')
-def user(name):
-    return render_template('user.html', name=name)
-
-
 #ERROR HANDELER 404
 @app.errorhandler(404)
 def page_not_found(e):
@@ -175,17 +186,7 @@ def page_not_found(e):
 def page_not_found(e):
      return render_template("404.html"), 500
  
- 
-@app.route('/name', methods=['GET', 'POST'])
-def name():
-    name = None
-    form = NamerForm()
-    if form.validate_on_submit():
-        name = form.name.data
-        form.name.data = ''
-        flash("Form Submmitted Successfully")
-        
-    return render_template("name.html", name=name, form=form)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
