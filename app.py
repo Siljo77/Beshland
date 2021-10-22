@@ -41,10 +41,11 @@ def login():
         user = users.query.filter_by(username=form.username.data).first()
         if user:
             # Check the hash
-            if check_password_hash(user.password_hash, form.password.data):
-                load_user(user)
+            if user.verify_password(password=form.password.data):
+                login_user(user)
                 flash('Login Successfull')
-                return redirect(url_for('dashboard'))
+                next = request.args.get('next')
+                return redirect(next or url_for('dashboard'))
             else:
                 flash('Wrong Password -- Try Again!')
         else:
@@ -112,7 +113,7 @@ def update(id):
 @app.route("/logout", methods=['GET', 'POST'])
 @login_required
 def logout():
-    load_user()
+    logout_user()
     flash('You Have Been Logged Out!')
     return redirect(url_for('login'))
 
