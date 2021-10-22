@@ -38,3 +38,11 @@ section#hero.container{
   border-radius: 5px;
   padding-top: 15px;
 }
+
+.grid h3{
+  text-align: end;
+}
+
+.grid h2{
+  text-align: start;
+}
