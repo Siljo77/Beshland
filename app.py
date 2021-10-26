@@ -11,19 +11,23 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 
 app = Flask(__name__)
 
+
 app.config['SECRET_KEY'] = 'medvescak77'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ivansijan:medvescak77@localhost/users'
 # Initialize the database
 db = SQLAlchemy(app)
+
 
 # Flask_Login staff
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return Users.query.get(int(user_id))
+
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer,primary_key=True)
@@ -32,6 +36,7 @@ class Users(db.Model, UserMixin):
     email = db.Column(db.String(100),nullable=False, unique=True )
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     password_hash = db.Column(db.String(100))
+    
                               
     @property
     def password(self):
@@ -61,7 +66,6 @@ class NamerForm(FlaskForm):
     name = StringField("What's Your Name", validators=[DataRequired()])                   
     submit = SubmitField("Submit")
     
-
 
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
@@ -143,7 +147,6 @@ def login():
 @login_required
 def dashboard():
     return render_template("dashboard.html")
-
 
 
 #Create Uppdate page

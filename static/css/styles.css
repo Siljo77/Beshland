@@ -54,7 +54,7 @@
   position: relative;
   width: 60px;
   height: 60px;
-  background: url('../img/menu2.png');
+  background: url('../img/plavimenu.png');
   background-repeat: no-repeat;
   background-size: 30px;
   background-position: center;
@@ -197,7 +197,6 @@ body {
   justify-content: center;
   overflow: hidden;
 }
-
 
 
 #hero {
