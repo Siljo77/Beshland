@@ -1,43 +1,53 @@
-{% extends 'base.html' %}
+{% include 'links' %}
+    <section class="showcase">
+        <header>
+            <h2 class="logo">BESHLAND</h2>
+            <div class="toggle"></div>
+        </header>
 
-{% block body %}
-<body>
-    <div class="beckground">
-        <div class="video-container">
-        <video autoplay loop muted>
-            <source src="/static/img/video3.mp4" type="video/mp4">
-        </video>
-    </div>
-</body>
-<section id="hero">
-    <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
-            style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">Welcome to BESHLAND</h1>
-    <div class="container" style="margin-bottom: 50px; margin-top: 600px;">
-        <div class="row">
-            <div class="col">
-                <p class="text-center" data-aos="fade-up" data-aos-duration="350" data-aos-once="true"
-                    style="color: var(--bs-white);font-family: Montserrat, sans-serif;font-size: 22px;">
-                    Conntacts and News</p>
-            </div>
+        <video src="static/img/video3.mp4" autoplay loop muted ></video>
+
+        <div class="text">
+            <h2>Welcome</h2>
+            <h3>Exploring the world of BES</h3>
+            <a href="#">Explore</a>
         </div>
-        <div class="row">
-            <div class="col">
-                <p class="pulse animated"
-                    style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">
-                    Telephone number: +38597315640</p>
-                <p class="pulse animated"
-                    style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">email:
-                    mateja.sijan@gmail.com</p>
-            </div>
-            <div class="col">
-                <p class="pulse animated"
-                    style="font-family: Montserrat, sans-serif;color: var(--bs-white);font-size: 20px;">
-                    Workshops from 01.01.2022 every Tuesday</p>
-            </div>
+
+        <ul class="social">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twiter</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </section>
+
+        <div class= "menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}"
+                    style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('gallery')}}"
+                        style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('dashboard')}}"
+                            style="font-family: Montserrat, sans-serif;">DASHBOARD</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}"
+                            style="font-family: Montserrat, sans-serif;">LOGOUT</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('add_user')}}"
+                            style="font-family: Montserrat, sans-serif;">REGISTER</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}"
+                            style="font-family: Montserrat, sans-serif;">LOGIN</a></li>          
+                {% endif %}    
+            </ul>
         </div>
-    </div>
-</section>
+
+        <script>
+            const menuToggle = document.querySelector('.toggle')
+            const showcase = document.querySelector('.showcase')
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active')
+                showcase.classList.toggle('active')
+            })
+        </script>
 </body>
-
-
-{% endblock %}
+</html>

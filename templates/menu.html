@@ -1,22 +1,54 @@
-{% extends 'base.html' %}
-
-{% block body %}
-<bod>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Travel</title>
+</head>  
+<body>
     <section class="showcase">
         <header>
+            <h2 class="logo">BESHLAND</h2>
             <div class="toggle"></div>
         </header>
-        <div class= "menu">
 
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
+        <video src="static/img/video3.mp4" autoplay loop muted ></video>
 
+        <div class="overlay"></div>
+
+        <div class="text">
+            <h2>Welcome</h2>
+            <h3>Exploring the world of BES</h3>
+            <a href="#">Explore</a>
         </div>
+
+        <ul class="social">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twiter</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
     </section>
-</bod>
-{% endblock %}
+
+        <div class= "menu">
+            <ul>
+                <li><a href="index">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="gallery">Gallery</a></li>
+                <li><a href="add_user">Register</a></li>
+                <li><a href="login">Login</a></li>
+            </ul>
+        </div>
+
+        <script>
+            const menuToggle = document.querySelector('.toggle')
+            const showcase = document.querySelector('.showcase')
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active')
+                showcase.classList.toggle('active')
+            })
+        </script>
+</body>
+</html>
+
+
+

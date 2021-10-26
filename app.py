@@ -186,13 +186,6 @@ def page_not_found(e):
 def page_not_found(e):
      return render_template("404.html"), 500
  
-@app.route('/menu')
-def menu():
-    name = 'menu'
-    return render_template('menu.html', name=name)
-
- 
-
 
 if __name__ == '__main__':
     app.run(debug=True)
