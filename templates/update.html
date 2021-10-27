@@ -11,18 +11,12 @@
  
 {% endfor %}
 
-{% if name %}
-    <h1>Update User {{ name }}</h1>
-    <br/><br/>
-    {% for our_users in our_users %}
 
-    {{ our_users.id }}.
-    {{ our_users.name }} - {{ our_users.email }}<br/>
-
-    {% endfor %}
-{% else %}
     <h1>Update user</h1>
-    <br/>
+    <br/><br/>
+    ID to Update: {{ id }}<br/>
+    Current Id:
+    <br/><br/>
     <form action="/update/{{ name_to_update.id }}" method="POST">
         {{ form.hidden_tag() }}
 
@@ -49,12 +43,7 @@
 
 <br/><br/>
 
-{% for our_users in our_users %}
-    {{ our_users.id }}. 
-    {{ our_users.name }} - {{ our_users.email }} <br/>
 
-{% endfor %}
 
-{% endif %}
 
 {% endblock %}

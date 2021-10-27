@@ -67,7 +67,7 @@ def about():
 #Create Gallery Page
 @app.route('/gallery')
 def gallery():
-    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg"]
+    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg", "vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
     images_row_1 = ["vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg"]
     images_row_2 = ["vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
     return render_template('gallery.html', images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
@@ -127,6 +127,7 @@ def dashboard():
 
 #Create Uppdate page
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
 def update(id):
     form = UserForm()
     name_to_update = Users.query.get_or_404(id)
@@ -141,9 +142,9 @@ def update(id):
         except:
             db.session.commit()
             flash("Error, try again!")
-            return render_template("update.html", form=form, name_to_update=name_to_update)
+            return render_template("update.html", form=form, name_to_update=name_to_update,id=id)
     else:
-        return render_template("update.html", form=form, name_to_update=name_to_update)
+        return render_template("update.html", form=form, name_to_update=name_to_update,id=id)
 
 
 #Create Logout Page
