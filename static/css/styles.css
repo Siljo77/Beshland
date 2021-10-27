@@ -228,17 +228,6 @@ body {
 
 }
 
-.container .box .dream img{
-  width: 100%;
-  padding-bottom: 15px;
-  border-radius: 5px;
-  padding-top: 15px;
-  width:250px;
-  height:250px;
-
-}
-
-
 .customer_logout_link{
   color: black;
   font-size: 20px ;
@@ -255,8 +244,14 @@ body {
 }
 
 .gallery-img {
-  max-width: 100%;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  padding-top: 15px;
+  width: 250px;
+  height: 250px;
 }
+
+
 .pb20 {
   padding-bottom: 20px;
 }
