@@ -253,5 +253,12 @@ body {
   height:700px;
 }
 
+.customer_update_link {
+  font-size: 20px;
+  color: black;
+}
 
-
+.customer_logout_link {
+  font-size: 20px;
+  
+}

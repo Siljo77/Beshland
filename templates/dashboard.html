@@ -17,7 +17,9 @@
   <h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
             style="font-size: 25px;text-align: center;margin-top: 30px;">My Account</h3>
   <br/>
-  <a class="customer_logout_link" href="{{url_for('logout')}}">Log Out</a>                         
+  <a class="customer_logout_link" href="{{url_for('logout')}}">Log Out</a>  
+  
+  <a class="customer_update_link" href ="{{url_for('update', id=current_user.id) }}">Update Profile</a>                       
  
   <br/><br/><br>
   <strong>Name:</strong> {{ current_user.name }}<br/>
