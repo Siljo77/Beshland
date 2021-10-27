@@ -54,7 +54,7 @@
   position: relative;
   width: 60px;
   height: 60px;
-  background: url('../img/plavimenu.png');
+  background: url("/static/img/menu.png");
   background-repeat: no-repeat;
   background-size: 30px;
   background-position: center;
@@ -158,7 +158,7 @@
 .menu ul li a {
   text-decoration: none;
   font-size: 24px;
-  color:#111
+  color: #111
 }
 
 .menu ul li a:hover{
@@ -212,6 +212,7 @@ body {
   max-width: 1000px;
 }
 
+
 .container .box {
   display: flex;
   flex-direction: row;
@@ -236,6 +237,7 @@ body {
   height:250px;
 
 }
+
 
 .customer_logout_link{
   color: black;

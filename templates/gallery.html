@@ -8,6 +8,7 @@
             style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">PHOTO GALLERY</h1>
             <div class="box">
                 <div class="dream">
+                    <h1>Workshops</h1>
                     {% for image in images_row %}
                     {% if image in images_row %}
                     <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
@@ -16,6 +17,7 @@
                     {% endfor %}
                 </div>
                 <div class="dream">
+                    <h1>Top sales</h1>
                     {% for image in images_row_1 %}
                     {% if image in images_row_1 %}
                     <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
@@ -24,6 +26,7 @@
                     {% endfor %}
                 </div>
                 <div class="dream">
+                    <h1>New Products</h1>
                     {% for image in images_row_2 %}
                     {% if image in images_row_2 %}
                     <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
