@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
 {% for message in get_flashed_messages() %}
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,7 +9,6 @@
   </div>
  
 {% endfor %}
-
 
     <h1>Update user</h1>
     <br/><br/>
@@ -38,12 +36,7 @@
     
         {{ form.submit(
             class="btn btn-dark") }}
-        
     </form>
 
 <br/><br/>
-
-
-
-</div>
 {% endblock %}
