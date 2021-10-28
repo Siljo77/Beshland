@@ -60,22 +60,24 @@ def index():
 #Create About Page
 @app.route('/about')
 def about():
-    name = 'About'
-    return render_template('about.html', name=name)
+    page_name= 'About'
+    return render_template('about.html', page_name=page_name)
 
 
 #Create Gallery Page
 @app.route('/gallery')
 def gallery():
+    page_name= 'Gallery'
     images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg", "vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
     images_row_1 = ["vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg"]
     images_row_2 = ["vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
-    return render_template('gallery.html', images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
+    return render_template('gallery.html',page_name=page_name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
     
     
 #Create and Add User Page
 @app.route('/user/add', methods=['GET', 'POST'])
 def add_user():
+    page_name = "Create Account"
     name = None
     form = UserForm()
     if form.validate_on_submit():
@@ -95,12 +97,13 @@ def add_user():
         form.password_hash = ''
     
     our_users = Users.query.order_by(Users.date_added)
-    return render_template("add_user.html",form=form,name=name, our_users=our_users)
+    return render_template("add_user.html",page_name=page_name, form=form,name=name, our_users=our_users)
 
    
 #Create Loign page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    page_name = "Login"
     form = LoginForm()
     if form.validate_on_submit():
         user = Users.query.filter_by(username=form.username.data).first()
@@ -115,14 +118,15 @@ def login():
                 flash('Wrong Password -- Try Again!')
         else:
             flash("That User Dosn't Exist! Try")
-    return render_template("login.html", form=form)
+    return render_template("login.html",page_name=page_name, form=form)
 
 
 #Create Dashboard page
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template("dashboard.html")
+    page_name = "Dashboard"
+    return render_template("dashboard.html", page_name=page_name)
 
 
 #Create Uppdate page
