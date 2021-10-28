@@ -2,7 +2,7 @@
 
 {% block body %}
 
-
+<div class="container">
 {% for message in get_flashed_messages() %}
     {% if user %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,6 +38,6 @@
     </form>
 
 <br/><br/>
-
+</div>
 
 {% endblock %}
