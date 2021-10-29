@@ -53,8 +53,9 @@ class Users(db.Model, UserMixin):
 @app.route('/')
 @app.route('/index')
 def index():
+    page_name = "Index"
     name = "Welcome to Beshland"
-    return render_template('index.html' , name=name)
+    return render_template('index.html' , name=name, page_name=page_name)
 
 
 #Create About Page
@@ -171,6 +172,11 @@ def page_not_found(e):
 def page_not_found(e):
      return render_template("404.html"), 500
  
+@app.route('/about1')
+def about1():
+    page_name = 'About1'
+    return render_template('about1.html', page_name= page_name)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

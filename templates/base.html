@@ -13,12 +13,18 @@
     <title>{{ page_name }}</title>
 </head>
 <body>
-    {% include 'navbar.html' %}
-    <div class="container">
+    <section class="showcase">
+        <header>
+            <h2><a href="{{url_for('index')}}"  >BESHLAND</a></h2>
+            <div class="toggle"></div>
+        </header>
         {% block body %}
-
+        
         {% endblock %}
-    </div>
+ 
+        {% include 'navbar1.html' %}
+
+
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

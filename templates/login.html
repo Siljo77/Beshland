@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
+<section id="hero">
 
 {% for message in get_flashed_messages() %}
     {% if user %}
@@ -36,5 +37,6 @@
     </form>
 <br/><br/>
 </div>
+</section>
 
 {% endblock %}

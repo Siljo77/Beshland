@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-
 {% block body %}
+<section id="hero">
+
 {% for message in get_flashed_messages() %}
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -39,4 +40,5 @@
     </form>
 
 <br/><br/>
+</section>
 {% endblock %}
