@@ -1,44 +1,52 @@
 {% extends 'base.html' %}
 {% block body %}
 <section id="hero">
+    <div class="container">
+        {% for message in get_flashed_messages() %}
 
-{% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Hey, {{name}} {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    Hey, {{name}} {{ message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
- 
-{% endfor %}
+        {% endfor %}
 
-    <h1>Update user</h1>
-    <br/><br/>
-    ID to Update: {{ id }}<br/>
-    Current Id:
-    <br/><br/>
-    <form action="/update/{{ name_to_update.id }}" method="POST">
-        {{ form.hidden_tag() }}
+        {% if id == current_user.id %}
 
-        {{ form.name.label(
+        <h1>Update user</h1>
+
+        <br /><br />
+        <form action="/update/{{ name_to_update.id }}" method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.name.label(
             class="form-label") }}
-        {{ form.name(
+            {{ form.name(
             class="form-control", value= name_to_update.name) }}
-        <br/>
-        {{ form.username.label(
+            <br />
+            {{ form.username.label(
             class="form-label") }}
-        {{ form.username(
+            {{ form.username(
             class="form-control", value= name_to_update.username) }}
-        <br/>
-        {{ form.email.label(
+            <br />
+            {{ form.email.label(
             class="form-label") }}
-        {{ form.email(
+            {{ form.email(
             class="form-control", value= name_to_update.email) }}
-        <br/>
-    
-        {{ form.submit(
-            class="btn btn-dark") }}
-    </form>
+            <br />
 
-<br/><br/>
+            {{ form.submit(
+            class="btn btn-dark") }}
+        </form>
+
+        <br /><br />
+
+        {% else %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Sory! You cant't edit this user!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div>
 </section>
 {% endblock %}

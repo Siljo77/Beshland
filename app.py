@@ -172,11 +172,6 @@ def page_not_found(e):
 def page_not_found(e):
      return render_template("404.html"), 500
  
-@app.route('/about1')
-def about1():
-    page_name = 'About1'
-    return render_template('about1.html', page_name= page_name)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
