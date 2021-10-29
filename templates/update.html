@@ -11,12 +11,20 @@
 
         {% endfor %}
 
-        {% if id == current_user.id %}
 
         <h1>Update user</h1>
 
         <br /><br />
+        {% if name_to_update.id %}
+
         <form action="/update/{{ name_to_update.id }}" method="POST">
+            {% if error and error.error %}
+
+            <div class="info type-{{ error.type }}">
+                {{ error.error }}
+            </div>
+            {% endif %}
+
             {{ form.hidden_tag() }}
 
             {{ form.name.label(
@@ -38,15 +46,13 @@
             {{ form.submit(
             class="btn btn-dark") }}
         </form>
-
-        <br /><br />
-
         {% else %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            Sory! You cant't edit this user!!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        Warning <br/>
+            <div class="info type-{{ error.type }}">
+                {{ error.error }}
+            </div>
         {% endif %}
+        <br /><br />
     </div>
 </section>
 {% endblock %}

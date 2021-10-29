@@ -247,10 +247,16 @@ body {
 }
 
 .figure-img {
-  width: 325px;
+  width: 250px;
 }
+
 
 .pb20 {
   padding-bottom: 20px;
 }
 
+
+.type-error {
+  color: red;
+}
+.type-info {color: green; font-weight: bold; font-size: 2.0em;}

@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from forms import UserForm, LoginForm
 
 app = Flask(__name__)
@@ -26,28 +26,27 @@ def load_user(user_id):
 
 
 class Users(db.Model, UserMixin):
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), nullable=False, unique=True)
     name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100),nullable=False, unique=True )
+    email = db.Column(db.String(100), nullable=False, unique=True)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     password_hash = db.Column(db.String(100))
-    
-                              
+
     @property
     def password(self):
-        raise AttributeError('password is not a redable attribute') 
-    
+        raise AttributeError('password is not a redable attribute')
+
     @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
-        
-    def verify_password(self,password):
-        return check_password_hash(self.password_hash, password)                  
-                              
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
     def __repr__(self):
         return '<Name %r>' % self.name
-    
+
 
 #Create Index Page
 @app.route('/')
@@ -55,26 +54,27 @@ class Users(db.Model, UserMixin):
 def index():
     page_name = "Index"
     name = "Welcome to Beshland"
-    return render_template('index.html' , name=name, page_name=page_name)
+    return render_template('index.html', name=name, page_name=page_name)
 
 
 #Create About Page
 @app.route('/about')
 def about():
-    page_name= 'About'
+    page_name = 'About'
     return render_template('about.html', page_name=page_name)
 
 
 #Create Gallery Page
 @app.route('/gallery')
 def gallery():
-    page_name= 'Gallery'
-    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg", "vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
+    page_name = 'Gallery'
+    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg", "vaza.jpeg",
+                  "radione.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
     images_row_1 = ["vaza.jpeg", "radione.jpeg", "radionica_klinci.jpeg"]
     images_row_2 = ["vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
-    return render_template('gallery.html',page_name=page_name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
-    
-    
+    return render_template('gallery.html', page_name=page_name, images_row=images_row, images_row_1=images_row_1, images_row_2=images_row_2)
+
+
 #Create and Add User Page
 @app.route('/user/add', methods=['GET', 'POST'])
 def add_user():
@@ -84,8 +84,10 @@ def add_user():
     if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first()
         if user is None:
-            hashed_pw = generate_password_hash(form.password_hash.data, "sha256")
-            user = Users( name=form.name.data, username=form.username.data, email=form.email.data, password_hash=hashed_pw)
+            hashed_pw = generate_password_hash(
+                form.password_hash.data, "sha256")
+            user = Users(name=form.name.data, username=form.username.data,
+                         email=form.email.data, password_hash=hashed_pw)
             db.session.add(user)
             db.session.commit()
             flash("User Submmitted Successfully")
@@ -96,11 +98,11 @@ def add_user():
         form.username.data = ''
         form.email.data = ''
         form.password_hash = ''
-    
-    our_users = Users.query.order_by(Users.date_added)
-    return render_template("add_user.html",page_name=page_name, form=form,name=name, our_users=our_users)
 
-   
+    our_users = Users.query.order_by(Users.date_added)
+    return render_template("add_user.html", page_name=page_name, form=form, name=name, our_users=our_users)
+
+
 #Create Loign page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -119,7 +121,7 @@ def login():
                 flash('Wrong Password -- Try Again!')
         else:
             flash("That User Dosn't Exist! Try")
-    return render_template("login.html",page_name=page_name, form=form)
+    return render_template("login.html", page_name=page_name, form=form)
 
 
 #Create Dashboard page
@@ -130,26 +132,69 @@ def dashboard():
     return render_template("dashboard.html", page_name=page_name)
 
 
+def out(updatePage, error, name_to_update):
+    return render_template(updatePage, form=UserForm(), name_to_update=name_to_update, error=error)
+
+
+def wrapReturnMsg(type, error):
+    return {
+        "type": type,
+        "error": error
+    }
+
+
+def _error(updatePage, error, name_to_update):
+    return out(updatePage, wrapReturnMsg("error", error), name_to_update)
+
+
+def _warning(updatePage, error, name_to_update):
+    return out(updatePage,  wrapReturnMsg("warning", error), name_to_update)
+
+
+def _info(updatePage, error, name_to_update):
+    return out(updatePage, wrapReturnMsg("info", error), name_to_update)
+
 #Create Uppdate page
+
+
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update(id):
-    form = UserForm()
-    name_to_update = Users.query.get_or_404(id)
-    if request.method == 'POST':
-        name_to_update.name = request.form['name']
-        name_to_update.email = request.form['email']
-        name_to_update.username = request.form['username']
-        try:
-            db.session.commit()
-            flash("User Updated Successfully")
-            return render_template("update.html", form=form, name_to_update=name_to_update,)
-        except:
-            db.session.commit()
-            flash("Error, try again!")
-            return render_template("update.html", form=form, name_to_update=name_to_update,id=id)
-    else:
-        return render_template("update.html", form=form, name_to_update=name_to_update,id=id)
+
+    updatePage = 'update.html'
+
+    def error(error):
+        return _error(updatePage, error, False)
+
+    def info(name_to_update, error=False):
+        return _info(updatePage, error, name_to_update)
+
+    if int(id) <= 0 or int(id) != current_user.id:
+        return error("You do not have access to that user")
+
+    if not request.method == 'POST':
+        if request.method == 'GET':
+            name_to_update = Users.query.filter_by(id=id).first()
+            if not name_to_update:
+                return error("nema usera u bazi")
+            return info(name_to_update=name_to_update)
+
+    if not request.form['name']:
+        return error("nema imena")
+
+    name_to_update = Users.query.filter_by(id=id).first()
+    if not name_to_update:
+        return error("nema usera u bazi")
+
+    name_to_update.name = request.form['name']
+    name_to_update.email = request.form['email']
+    name_to_update.username = request.form['username']
+    try:
+        db.session.commit()
+        return info(name_to_update, "User Updated Successfully")
+    except:
+        db.session.commit()
+        return error("Error, try again!", name_to_update)
 
 
 #Create Logout Page
@@ -164,14 +209,15 @@ def logout():
 #ERROR HANDELER 404
 @app.errorhandler(404)
 def page_not_found(e):
-     return render_template("404.html"), 404
- 
- 
+    return render_template("404.html"), 404
+
  #ERROR HANDELER 500
+
+
 @app.errorhandler(500)
 def page_not_found(e):
-     return render_template("404.html"), 500
- 
+    return render_template("404.html"), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
