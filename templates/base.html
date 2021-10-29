@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,24 +13,26 @@
     <link rel="stylesheet" href="/static/css/lightbox.min.css">
     <title>{{ page_name }}</title>
 </head>
+
 <body>
     <section class="showcase">
         <header>
-            <h2><a href="{{url_for('index')}}"  >BESHLAND</a></h2>
+            <h2><a href="{{url_for('index')}}">BESHLAND</a></h2>
             <div class="toggle"></div>
         </header>
         {% block body %}
-        
+
         {% endblock %}
- 
+
         {% include 'navbar1.html' %}
 
 
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/bs-init.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="/static/js/Lightbox-Gallery.js"></script>
-    <script src="/static/js/lightbox-plus-jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/bs-init.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+        <script src="/static/js/Lightbox-Gallery.js"></script>
+        <script src="/static/js/lightbox-plus-jquery.min.js"></script>
 </body>
+
 </html>
