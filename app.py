@@ -155,12 +155,10 @@ def _info(updatePage, error, name_to_update):
     return out(updatePage, wrapReturnMsg("info", error), name_to_update)
 
 #Create Uppdate page
-
-
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update(id):
-
+    
     updatePage = 'update.html'
 
     def error(error):
