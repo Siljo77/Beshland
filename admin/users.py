@@ -1,4 +1,4 @@
-from admin.db import db
+from db import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
