@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import  LoginManager
 from public.routes import public_routes
 from admin.routes import admin_routes
-from admin.login_manager import startLogin
+from admin.login_manager import login_manager, startLogin
 from admin.users import Users
 from db import initDb
 
@@ -15,12 +15,6 @@ initDb(app)
 
 # Initialize the database
 db = SQLAlchemy(app)
-
-
-# Flask_Login staff
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = '/admin/login'
 
 
 @login_manager.user_loader
