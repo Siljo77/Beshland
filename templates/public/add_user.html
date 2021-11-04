@@ -29,23 +29,23 @@
             {{ form.hidden_tag() }}
 
             {{ form.name.label(class="form-label") }}
-            {{ form.name(class="form-control") }}
+            {{ form.name(class="form-control", placeholder="Full Name") }}
             <br />
 
             {{ form.username.label(class="form-label") }}
-            {{ form.username(class="form-control") }}
+            {{ form.username(class="form-control", placeholder="Username") }}
             <br />
 
             {{ form.email.label(class="form-label") }}
-            {{ form.email(class="form-control") }}
+            {{ form.email(class="form-control", placeholder="Email") }}
             <br />
 
             {{ form.password_hash.label(class="form-label") }}
-            {{ form.password_hash(class="form-control") }}
+            {{ form.password_hash(class="form-control", placeholder="Password") }}
             <br />
 
             {{ form.password_hash2.label(class="form-label") }}
-            {{ form.password_hash2(class="form-control") }}
+            {{ form.password_hash2(class="form-control", placeholder="Repeat Password") }}
             <br />
 
             {{ form.submit(class="btn btn-dark") }}
