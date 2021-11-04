@@ -1,3 +1,4 @@
+from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
 from admin.forms import UserForm, LoginForm
@@ -14,7 +15,6 @@ def loginrequired():
     return render_template("dashboard.html", page_name='login')
 
 
-
 #Create Index Page
 @admin_routes.route('/index')
 @admin_routes.route('/')
@@ -23,6 +23,7 @@ def index():
     page_name = "Index"
     name = "Welcome to Beshland"
     return render_template('index.html', name=name, page_name=page_name)
+
 
 #Create About Page
 @admin_routes.route('/about')

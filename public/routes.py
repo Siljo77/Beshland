@@ -9,7 +9,6 @@ from werkzeug.security import generate_password_hash
 public_routes = Blueprint('public_routes', __name__, static_folder="static", template_folder="templates")
 
 
-
 #Create Index Page
 @public_routes.route('/index')
 @public_routes.route('/')

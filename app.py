@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import  LoginManager
 from public.routes import public_routes
 from admin.routes import admin_routes
-from admin import startLogin
+from admin.login_manager import startLogin
 from admin.users import Users
 from db import initDb
 
