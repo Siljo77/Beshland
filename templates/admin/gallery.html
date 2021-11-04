@@ -1,0 +1,23 @@
+{% extends 'admin/base.html' %}
+
+<body>
+    {% block body %}
+    <section id="hero">
+        <div class="container">
+            <div class="row">
+                <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">{{ page_name }}</h1>
+            </div>
+            <div class="row">
+                {% for image in images_row %}
+                <div class="col-md-4">
+                    {% if image %}
+                    <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
+                            class="pulse animated gallery-img" /></a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+</body>

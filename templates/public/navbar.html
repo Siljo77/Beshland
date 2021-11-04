@@ -1,0 +1,32 @@
+</section>
+<div class= "menu">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.index')}}"
+            style="font-family: Montserrat, sans-serif;">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.about')}}"
+            style="font-family: Montserrat, sans-serif;">ABOUT</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.gallery')}}"
+                style="font-family: Montserrat, sans-serif;">GALLERY</a></li>
+        {% if current_user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.dashboard')}}"
+                    style="font-family: Montserrat, sans-serif;">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.logout')}}"
+                    style="font-family: Montserrat, sans-serif;">LOGOUT</a></li>
+        {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.add_user')}}"
+                    style="font-family: Montserrat, sans-serif;">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('public_routes.login')}}"
+                    style="font-family: Montserrat, sans-serif;">LOGIN</a></li>          
+        {% endif %}    
+    </ul>
+</div>
+
+<script>
+    const menuToggle = document.querySelector('.toggle')
+    const showcase = document.querySelector('.showcase')
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active')
+        showcase.classList.toggle('active')
+    })
+</script>

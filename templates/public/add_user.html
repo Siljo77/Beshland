@@ -1,0 +1,60 @@
+{% extends 'public/base.html' %}
+{% block body %}
+<section id="hero">
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Hey {{name}} {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor %}
+
+        {% if name %}
+        <h1>User Added , Hi {{ name }}</h1>
+        <br /><br />
+        {% for our_users in our_users %}
+
+        {{ our_users.id }}.<a href="{{url_for('public_routes.update', id=our_users.id) }}">
+            {{ our_users.name }}</a> - {{ our_users.email }}<br />
+
+        {% endfor %}
+
+        {% else %}
+        <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+            style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ page_name }}</h1>
+        <br />
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+            <br />
+
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+            <br />
+
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+            <br />
+
+            {{ form.password_hash.label(class="form-label") }}
+            {{ form.password_hash(class="form-control") }}
+            <br />
+
+            {{ form.password_hash2.label(class="form-label") }}
+            {{ form.password_hash2(class="form-control") }}
+            <br />
+
+            {{ form.submit(class="btn btn-dark") }}
+        </form>
+
+        <br /><br />
+
+
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
