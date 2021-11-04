@@ -1,6 +1,4 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import  LoginManager
 from public.routes import public_routes
 from admin.routes import admin_routes
 from admin.login_manager import login_manager, startLogin
@@ -13,14 +11,10 @@ app.register_blueprint(admin_routes, url_prefix="/admin")
 startLogin(app)
 initDb(app)
 
-# Initialize the database
-db = SQLAlchemy(app)
-
 
 @login_manager.user_loader
 def load_user(user_id):
     return Users.query.get(int(user_id))
-
 
 
 if __name__ == '__main__':
