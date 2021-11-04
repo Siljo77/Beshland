@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'public/base.html' %}
 {% block body %}
 <section id="hero">
     <div class="container">
@@ -17,7 +17,7 @@
         <br /><br />
         {% if name_to_update.id %}
 
-        <form action="/update/{{ name_to_update.id }}" method="POST">
+        <form action="/public/update/{{ name_to_update.id }}" method="POST">
             {% if error and error.error %}
 
             <div class="info type-{{ error.type }}">

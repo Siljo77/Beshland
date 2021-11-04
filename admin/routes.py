@@ -12,7 +12,7 @@ admin_routes = Blueprint('admin_routes', __name__, static_folder="static", templ
 @admin_routes.route('/loginrequired', methods=['GET', 'POST'])
 @login_required
 def loginrequired():
-    return render_template("dashboard.html", page_name='login')
+    return render_template("admin/dashboard.html", page_name='login')
 
 
 #Create Index Page
@@ -22,7 +22,7 @@ def loginrequired():
 def index():
     page_name = "Index"
     name = "Welcome to Beshland"
-    return render_template('index.html', name=name, page_name=page_name)
+    return render_template('admin/index.html', name=name, page_name=page_name)
 
 
 #Create About Page
@@ -30,7 +30,7 @@ def index():
 @login_required
 def about():
     page_name = 'About'
-    return render_template('about.html', page_name=page_name)
+    return render_template('admin/about.html', page_name=page_name)
     
 
 
@@ -41,7 +41,7 @@ def gallery():
     page_name = 'Gallery'
     images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg", "vaza.jpeg",
                   "radione.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
-    return render_template('gallery.html', page_name=page_name, images_row=images_row)
+    return render_template('admin/gallery.html', page_name=page_name, images_row=images_row)
 
 
 #Create Dashboard page
@@ -49,7 +49,7 @@ def gallery():
 @login_required
 def dashboard():
     page_name = "Dashboard"
-    return render_template("dashboard.html", page_name=page_name)
+    return render_template("admin/dashboard.html", page_name=page_name)
 
 
 #Create Logout Page
@@ -78,7 +78,7 @@ def login():
                 flash('Wrong Password -- Try Again!')
         else:
             flash("That User Dosn't Exist! Try")
-    return render_template("login.html", page_name=page_name, form=form)
+    return render_template("admin/login.html", page_name=page_name, form=form)
 
 
 #Create and Add User Page
@@ -106,7 +106,7 @@ def add_user():
         form.password_hash = ''
 
     our_users = Users.query.order_by(Users.date_added)
-    return render_template("add_user.html", page_name=page_name, form=form, name=name, our_users=our_users)
+    return render_template("admin/add_user.html", page_name=page_name, form=form, name=name, our_users=our_users)
 
 
 
@@ -138,7 +138,7 @@ def _info(updatePage, error, name_to_update):
 @login_required
 def update(id):
 
-    updatePage = 'update.html'
+    updatePage = 'admin/update.html'
 
     def error(error):
         return _error(updatePage, error, False)
@@ -178,10 +178,10 @@ def update(id):
 #ERROR HANDELER 404
 @admin_routes.errorhandler(404)
 def page_not_found(e):
-    return render_template("404.html"), 404
+    return render_template("public/404.html"), 404
 
 
  #ERROR HANDELER 500
 @admin_routes.errorhandler(500)
 def page_not_found(e):
-    return render_template("404.html"), 500
+    return render_template("public/404.html"), 500
