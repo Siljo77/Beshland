@@ -4,7 +4,7 @@ from wtforms import StringField, SubmitField, PasswordField
 
 
 class UserForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
+    name = StringField("Full Name", validators=[DataRequired()])
     username = StringField("Username", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
     password_hash = PasswordField("Password", validators=[DataRequired(), EqualTo('password_hash2', message= 'Passwords Must Match!')]) 
