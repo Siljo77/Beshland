@@ -16,7 +16,7 @@
         <br /><br />
         {% for our_users in our_users %}
 
-        {{ our_users.id }}.<a href="{{url_for('update', id=our_users.id) }}">
+        {{ our_users.id }}.<a href="{{url_for('admin_routes.update', id=our_users.id) }}">
             {{ our_users.name }}</a> - {{ our_users.email }}<br />
 
         {% endfor %}
