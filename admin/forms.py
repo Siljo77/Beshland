@@ -9,12 +9,12 @@ class UserForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
     password_hash = PasswordField("Password", validators=[DataRequired(), EqualTo('password_hash2', message= 'Passwords Must Match!')]) 
     password_hash2 = PasswordField("Confirm Password", validators=[DataRequired()])                              
-    submit = SubmitField("Submit")    
+    submit = SubmitField("Create Account")    
     
          
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField("Submit")
+    submit = SubmitField("Login")
 
 
