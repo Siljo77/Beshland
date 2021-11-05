@@ -83,6 +83,7 @@ def login():
 
 #Create and Add User Page
 @admin_routes.route('/user/add', methods=['GET', 'POST'])
+@login_required
 def add_user():
     page_name = "Create Account"
     name = None

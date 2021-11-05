@@ -1,8 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
 db = SQLAlchemy()
-
-
 
 def initDb(app):
     app.config['SECRET_KEY'] = 'medvescak77'

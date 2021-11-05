@@ -11,8 +11,8 @@
                 {% for image in images_row %}
                 <div class="col-md-4">
                     {% if image %}
-                    <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
-                            class="pulse animated gallery-img" /></a>
+                    <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"><img class="pulse animated gallery-img"  data-bss-hover-animate="pulse"></a>
+    
                     {% endif %}
                 </div>
                 {% endfor %}
