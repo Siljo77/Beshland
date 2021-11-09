@@ -160,10 +160,12 @@ def update(id):
     name_to_update.username = request.form['username']
     try:
         db.session.commit()
-        return info(name_to_update, "User Updated Successfully")
+        flash("User uppdated Successfully")
+        return info(name_to_update)
     except:
         db.session.commit()
-        return error("Error, try again!", name_to_update)
+        flash("Error, Tray Again!")
+        return error(name_to_update)
 
 
 #ERROR HANDELER 404
