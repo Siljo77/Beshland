@@ -232,10 +232,12 @@ body {
 .customer_update_link {
   font-size: 20px;
   color: black;
+  padding-right: 150px;
 }
 
 .customer_logout_link {
   font-size: 20px;
+  padding-left: 150px;
 }
 
 .gallery-img {

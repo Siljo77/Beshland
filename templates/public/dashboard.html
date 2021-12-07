@@ -12,21 +12,28 @@
         {% endfor %}
         <div class="User info">
             <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
-                style="font-size: 30px;text-align: center;margin-top: 30px; margin-bottom: 45px;">{{ page_name }}</h1>
+                style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px;">{{ page_name }}</h1>
 
-            <h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
-                style="font-size: 25px;text-align: center;margin-top: 30px;">My Account</h3>
-            <br />
-            <a class="customer_logout_link" href="{{url_for('public_routes.logout')}}">Log Out</a>
+                <h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+                    style="font-size: 25px;text-align: center;margin-top: 30px;">My Account</h3>
+                <br>
+                    <strong>Name:</strong> {{ current_user.name }}<br />
+                    <strong>Username:</strong> {{ current_user.username }}<br />
+                    <strong>Email</strong> {{ current_user.email }}<br />
+                    <strong>Date Joined</strong> {{ current_user.date_added }}<br />
 
-            <a class="customer_update_link" href="{{url_for('public_routes.update', id=current_user.id) }}">Update Profile</a>
-
-            <br /><br /><br>
-            <strong>Name:</strong> {{ current_user.name }}<br />
-            <strong>Username:</strong> {{ current_user.username }}<br />
-            <strong>Email</strong> {{ current_user.email }}<br />
-            <strong>Date Joined</strong> {{ current_user.date_added }}<br />
         </div>
+                <br></br>
+        <div class="row">
+            <div class="col">
+                <a class="customer_logout_link" href="{{url_for('public_routes.logout')}}">Log Out</a>
+        
+            </div>
+            <div class="col">
+                <a class="customer_update_link" href="{{url_for('public_routes.update', id=current_user.id) }}">Update Profile</a>
+            </div>
+        </div>
+       
         <br /><br /><br>
 
         <div class="row">
