@@ -39,8 +39,8 @@ def about():
 @login_required
 def gallery():
     page_name = 'Gallery'
-    images_row = ["zdjela_gline.jpeg", "loncarstvo.jpg", "klinci.jpg", "vaza.jpeg",
-                  "radione.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg"]
+    images_row = ["bes_slika.jpeg", "bes_slika2.jpeg", "bes_slika3.jpeg", "bes_slika4.jpeg",
+                  "bes_slika5.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg","bes_slika1.jpeg"]
     return render_template('admin/gallery.html', page_name=page_name, images_row=images_row)
 
 
