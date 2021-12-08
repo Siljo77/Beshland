@@ -45,6 +45,9 @@
 
             {{ form.submit(
             class="btn btn-dark") }}
+
+            <a href="{{url_for('admin_routes.update', id=id) }}" class="btn btn-danger">Delete</a>
+
         </form>
         {% else %}
         Warning <br/>

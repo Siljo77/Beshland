@@ -110,7 +110,6 @@ def add_user():
 
 
 
-
 def out(updatePage, error, name_to_update):
     return render_template(updatePage, form=UserForm(), name_to_update=name_to_update, error=error)
 
@@ -137,46 +136,46 @@ def _info(updatePage, error, name_to_update):
 @admin_routes.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update(id):
+    form = UserForm()
+    name_to_update = Users.query.get_or_404(id)
+    if request.method == "POST":
+        name_to_update.name = request.form['name']
+        name_to_update.username = request.form['username']
+        name_to_update.email = request.form['email']
 
-    updatePage = 'admin/update.html'
+        try:
+            db.session.commit()
+            flash("User Updated Successfully")
+            return render_template("admin/update.html", form=form,  name_to_update=name_to_update)
+        except:
+            db.session.commit()
+            flash("Error, try again!")
+            return render_template("admin/update.html", form=form,  name_to_update=name_to_update)
+    else:
+        return render_template("admin/update.html", form=form,  name_to_update=name_to_update, id=id)
 
-    def error(error):
-        return _error(updatePage, error, False)
 
-    def info(name_to_update, error=False):
-        return _info(updatePage, error, name_to_update)
-
-    if int(id) <= 0 or int(id) != current_user.id:
-        return error("You do not have access to that user")
-
-    if not request.method == 'POST':
-        if request.method == 'GET':
-            name_to_update = Users.query.filter_by(id=id).first()
-            if not name_to_update:
-                return error("nema usera u bazi")
-            return info(name_to_update=name_to_update)
-
-    if not request.form['name']:
-        return error("nema imena")
-
-    name_to_update = Users.query.filter_by(id=id).first()
-    if not name_to_update:
-        return error("nema usera u bazi")
-
-    name_to_update.name = request.form['name']
-    name_to_update.email = request.form['email']
-    name_to_update.username = request.form['username']
+@admin_routes.route('/delete/<int:id>')
+def delete_user(id):
+    name = None
+    form = UserForm()
+    user_to_delete = Users.query.get_or_404(id)
     try:
+        db.session.delete(user_to_delete)
         db.session.commit()
-        flash("User Updated Successfully")
-        return info(name_to_update)
+        flash("User Deleted Successfully") 
+        
+        our_users = Users.query.order_by(Users.date_added)
+        return render_template("admin/add_user.html", 
+        form=form, name=name, 
+        our_users=our_users)
     except:
-        db.session.commit()
-        flash("Error, try again!")
-        return error(name_to_update)
-    
-
-    
+        flash('Sory, there is a problem with deleting this account!')
+        return render_template("admin/add_user.html", 
+        form=form, name=name, 
+        our_users=our_users)
+        
+        
 #ERROR HANDELER 404
 @admin_routes.errorhandler(404)
 def page_not_found(e):

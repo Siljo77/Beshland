@@ -17,7 +17,9 @@
         {% for our_users in our_users %}
 
         {{ our_users.id }}.<a href="{{url_for('admin_routes.update', id=our_users.id) }}">
-            {{ our_users.name }}</a> - {{ our_users.email }}<br />
+            {{ our_users.name }}</a> - {{ our_users.email }} 
+            <a href="{{url_for('admin_routes.delete_user', id=our_users.id) }}">Delete</a><br />
+           
 
         {% endfor %}
 
@@ -52,14 +54,15 @@
         </form>
 
         <br /><br />
-
-        {% for our_users in our_users %}
-        {{ our_users.id }}. <a href="{{url_for('admin_routes.update', id=our_users.id) }}">
-            {{ our_users.name }}</a> - {{ our_users.username }} - {{ our_users.email }} <br />
-
+        <div>
+            {% for our_users in our_users %}
+            {{ our_users.id }}. <a href="{{url_for('admin_routes.update', id=our_users.id) }}">
+                {{ our_users.name }}</a> - {{ our_users.username }} - {{ our_users.email }} 
+                <a href="{{url_for('admin_routes.update', id=our_users.id) }}" style="padding-left:35px;">Delete</a><br />
+        </div> 
         {% endfor %}
 
-        {% endif %}
+        {% endif %} 
     </div>
 </section>
 {% endblock %}
