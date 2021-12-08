@@ -54,11 +54,15 @@
         </form>
 
         <br /><br />
-        <div>
-            {% for our_users in our_users %}
-            {{ our_users.id }}. <a href="{{url_for('admin_routes.update', id=our_users.id) }}">
+        {% for our_users in our_users %}
+        <div class="row">
+            <div class="col">
+                {{ our_users.id }}. <a href="{{url_for('admin_routes.update', id=our_users.id) }}">
                 {{ our_users.name }}</a> - {{ our_users.username }} - {{ our_users.email }} 
+            </div> 
+            <div class="col">
                 <a href="{{url_for('admin_routes.update', id=our_users.id) }}" style="padding-left:35px;">Delete</a><br />
+            </div> 
         </div> 
         {% endfor %}
 

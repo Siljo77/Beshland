@@ -110,28 +110,6 @@ def add_user():
 
 
 
-def out(updatePage, error, name_to_update):
-    return render_template(updatePage, form=UserForm(), name_to_update=name_to_update, error=error)
-
-
-def wrapReturnMsg(type, error):
-    return {
-        "type": type,
-        "error": error
-    }
-
-
-def _error(updatePage, error, name_to_update):
-    return out(updatePage, wrapReturnMsg("error", error), name_to_update)
-
-
-def _warning(updatePage, error, name_to_update):
-    return out(updatePage,  wrapReturnMsg("warning", error), name_to_update)
-
-
-def _info(updatePage, error, name_to_update):
-    return out(updatePage, wrapReturnMsg("info", error), name_to_update)
-
 #Create Uppdate page
 @admin_routes.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
