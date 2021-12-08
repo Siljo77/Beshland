@@ -45,16 +45,14 @@
             {{ form.submit(
             class="btn btn-dark") }}
 
-            <a href="{{url_for('admin_routes.update', id=id) }}" class="btn btn-danger">Delete</a>
+            <a href="{{url_for('admin_routes.delete_user', id=id) }}" class="btn btn-danger">Delete</a>
 
         </form>
         {% else %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            You can't edit this user!
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Hey, {{name}} {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-
-        <h3>Access Denied</h3>
         
         {% endif %}
         <br /><br />

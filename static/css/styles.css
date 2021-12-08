@@ -85,15 +85,16 @@ a {
 }
 
 .text h2 {
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 800;
   line-height: 1m;
   text-transform: uppercase;
 
+
 }
 
 .text h3 {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 700;
   line-height: 1m;
   text-transform: uppercase;
@@ -109,7 +110,6 @@ a {
 .text a {
   display: inline-block;
   font-size: 1em;
-  background: #fff;
   padding: 10px 30px;
   text-decoration: none;
   color: #111;
