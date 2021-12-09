@@ -40,8 +40,15 @@ def about():
 @login_required
 def gallery():
     page_name = 'Gallery'
-    images_row = {"bes_slika1.jpeg":'Zastori', "bes_slika2.jpeg":'Lampe', "bes_slika3.jpeg":'Casa', "bes_slika4.jpeg":'Radovi',
-                 "bes_slika5.jpeg":'Stol', "radionica_klinci.jpeg":"Djeca", "vaze.jpeg":'Vaze', "velika_zdjela.jpeg":'Kolo', "case.jpeg":'Sarene case'}
+    images_row = {'bes_slika1.jpeg':{'Zastori':'250 kn', 'bijela' : 'boja'},
+                  "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
+                  "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
+                  "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
+                  "bes_slika5.jpeg":'Stol' + ' -- ' + '800 kn', 
+                  "radionica_klinci.jpeg":"Djeca" + ' -- ' + '300 kn', 
+                  "vaze.jpeg":'Vaze' + ' -- ' + '400 kn', 
+                  "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
+                  "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
     
     return render_template('admin/gallery.html', page_name=page_name, images_row=images_row)
 
