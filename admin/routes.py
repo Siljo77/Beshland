@@ -1,7 +1,8 @@
+from re import I
 from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
-from admin.forms import UserForm, LoginForm
+from admin.forms import UpdateForm, UserForm, LoginForm
 from admin.users import Users
 from werkzeug.security import generate_password_hash
 
@@ -41,7 +42,9 @@ def gallery():
     page_name = 'Gallery'
     images_row = ["bes_slika1.jpeg", "bes_slika2.jpeg", "bes_slika3.jpeg", "bes_slika4.jpeg",
                   "bes_slika5.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg","bes_slika1.jpeg"]
-    return render_template('admin/gallery.html', page_name=page_name, images_row=images_row)
+    for item_name in images_row:
+        item_name
+    return render_template('admin/gallery.html', page_name=page_name, images_row=images_row, item_name=item_name)
 
 
 #Create Dashboard page
@@ -136,7 +139,7 @@ def update(id):
 @admin_routes.route('/delete/<int:id>')
 def delete_user(id):
     name = None
-    form = UserForm()
+    form = UpdateForm()
     user_to_delete = Users.query.get_or_404(id)
     try:
         db.session.delete(user_to_delete)
