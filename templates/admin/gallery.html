@@ -10,11 +10,12 @@
             <div class="row">
                 {% for image in images_row %}
                 <div class="col-md-4">
-                {% if image %}
+                    {% if image %}
                     <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
                             class="pulse animated gallery-img"/></a>
-                            {{ item_name }}
-                {% endif %}
+                            {{ image }}
+                    {% endif %}
+                     
                 </div>
                 {% endfor %}
             </div>
