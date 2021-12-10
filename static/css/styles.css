@@ -240,13 +240,15 @@ body {
   padding-left: 150px;
 }
 
+
 .gallery-img {
   padding-bottom: 15px;
   border-radius: 5px;
   padding-top: 15px;
   width: 250px;
-  height: 250px;
+  height: 400px;
 }
+
 
 .figure-img {
   width: 250px;
