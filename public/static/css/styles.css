@@ -1,6 +1,6 @@
 
 a {
-  color: black;
+  color:black;
   text-decoration: none;
 }
 
@@ -260,4 +260,10 @@ body {
 .type-error {
   color: red;
 }
-.type-info {color: green; font-weight: bold; font-size: 2.0em;}
+.type-info {
+  color: green; 
+  font-weight: bold;
+   font-size: 2.0em;}
+
+  
+
