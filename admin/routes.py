@@ -40,7 +40,7 @@ def about():
 @login_required
 def gallery():
     page_name = 'Gallery'
-    images_row = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+    images_row = {'bes_slika.jpeg':'Zastori' + ' -- ' + '335 kn',
                   "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
                   "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
                   "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
@@ -50,7 +50,7 @@ def gallery():
                   "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
                   "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
     
-    images_row_clay = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+    images_row_clay = {'bes_slika.jpeg':'Zastori' + ' -- ' + '335 kn',
                   "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
                   "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
                   "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
@@ -60,7 +60,7 @@ def gallery():
                   "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
                   "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
     
-    images_row_workshop = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+    images_row_workshop = {'bes_slika.jpeg':'Zastori' + ' -- ' + '335 kn',
                   "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
                   "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
                   "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',

@@ -174,7 +174,7 @@ def update(id):
 @public_routes.route('/gallery')
 def gallery():
     page_name = 'Gallery'
-    images_row = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+    images_row = {'bes_slika.jpeg':'Zastori' + ' -- ' + '335 kn',
                   "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
                   "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
                   "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
