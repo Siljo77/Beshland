@@ -10,6 +10,7 @@
         </div>
 
         {% endfor %}
+       
         <div class="User info">
             <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
                 style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px;">{{ page_name }}</h1>
@@ -26,11 +27,11 @@
                 <br></br>
         <div class="row">
             <div class="col">
-                <a class="customer_logout_link" href="{{url_for('admin_routes.logout')}}">Log Out</a>
+                <a class="btn btn-dark" href="{{url_for('admin_routes.logout')}}">Log Out</a>
         
             </div>
             <div class="col">
-                <a class="customer_update_link" href="{{url_for('admin_routes.update', id=current_user.id) }}">Update Profile</a>
+                <a class="btn btn-dark" href="{{url_for('admin_routes.update', id=current_user.id) }}">Update Profile</a>
             </div>
         </div>
        

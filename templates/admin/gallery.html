@@ -2,12 +2,11 @@
 
 <body>
     {% block body %}
-    <section id="hero">
-        <div class="container">
-            <div class="row">
-                <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">{{ page_name }}</h1>
-            </div>
-            <div class="row">
+    <div class="container">
+        <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">{{ page_name }}</h1>
+        <div class="row">
+            <div class="col">
+                <h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">Webshop</h3>
                 {% for image in images_row %}
                 <div class="col-md-4">
                     {% if image %}
@@ -15,12 +14,37 @@
                             class="pulse animated gallery-img"/></a>
                             <br>
                             {{ images_row[image] }}
-                    {% endif %}
-                     
+                    {% endif %}   
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">Workshop</h3>
+                {% for image in images_row_clay %}
+                <div class="col-md-4">
+                    {% if image %}
+                    <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
+                            class="pulse animated gallery-img"/></a>
+                            <br>
+                            {{ images_row_clay[image] }}
+                    {% endif %}   
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">Beshland</h3>
+                {% for image in images_row_workshop %}
+                <div class="col-md-4">
+                    {% if image %}
+                    <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
+                            class="pulse animated gallery-img"/></a>
+                            <br>
+                            {{ images_row_workshop[image] }}
+                    {% endif %}   
                 </div>
                 {% endfor %}
             </div>
         </div>
-    </section>
-    {% endblock %}
+        {% endblock %}
+    </div>
 </body>

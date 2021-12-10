@@ -189,8 +189,6 @@ a {
   }
 }
 
-
-
 body {
   min-height: 100vh;
   background-color: E8E5DC;
@@ -263,3 +261,7 @@ body {
   color: red;
 }
 .type-info {color: green; font-weight: bold; font-size: 2.0em;}
+
+.col-lg-12{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
