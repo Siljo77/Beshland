@@ -26,13 +26,42 @@ def about():
 
 
 #Create Gallery Page
-@public_routes.route('/gallery')
-def gallery():
-    page_name = 'Gallery'
-    images_row = ["bes_slika1.jpeg", "bes_slika2.jpeg", "bes_slika3.jpeg", "bes_slika4.jpeg",
-                  "bes_slika5.jpeg", "radionica_klinci.jpeg", "vaze.jpeg", "velika_zdjela.jpeg", "case.jpeg","bes_slika1.jpeg"]
-    return render_template('public/gallery.html', page_name=page_name, images_row=images_row)
-
+#Create Gallery Page
+@public_routes.route('/explore')
+def explore():
+    page_name = 'Explore'
+    images_row = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+                  "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
+                  "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
+                  "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
+                  "bes_slika5.jpeg":'Stol' + ' -- ' + '800 kn', 
+                  "radionica_klinci.jpeg":"Djeca" + ' -- ' + '300 kn', 
+                  "vaze.jpeg":'Vaze' + ' -- ' + '400 kn', 
+                  "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
+                  "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
+    
+    images_row_clay = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+                  "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
+                  "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
+                  "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
+                  "bes_slika5.jpeg":'Stol' + ' -- ' + '800 kn', 
+                  "radionica_klinci.jpeg":"Djeca" + ' -- ' + '300 kn', 
+                  "vaze.jpeg":'Vaze' + ' -- ' + '400 kn', 
+                  "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
+                  "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
+    
+    images_row_workshop = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+                  "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
+                  "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
+                  "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
+                  "bes_slika5.jpeg":'Stol' + ' -- ' + '800 kn', 
+                  "radionica_klinci.jpeg":"Djeca" + ' -- ' + '300 kn', 
+                  "vaze.jpeg":'Vaze' + ' -- ' + '400 kn', 
+                  "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
+                  "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
+    
+    return render_template('public/explore.html', page_name=page_name, images_row=images_row, 
+                           images_row_clay=images_row_clay, images_row_workshop = images_row_workshop)
 
 #Create Dashboard page
 @public_routes.route('/dashboard', methods=['GET', 'POST'])
@@ -166,6 +195,31 @@ def update(id):
         db.session.commit()
         flash("Error, Tray Again!")
         return error(name_to_update)
+
+
+@public_routes.route('/gallery')
+def gallery():
+    page_name = 'Gallery'
+    images_row = {'bes_slika1.jpeg':'Zastori' + ' -- ' + '335 kn',
+                  "bes_slika2.jpeg":'Lampe' + ' -- ' + '500 kn',
+                  "bes_slika3.jpeg":'Casa' + ' -- ' + '150 kn',
+                  "bes_slika4.jpeg":'Radovi' + ' -- ' + '350 kn',
+                  "bes_slika5.jpeg":'Stol' + ' -- ' + '800 kn', 
+                  "radionica_klinci.jpeg":"Djeca" + ' -- ' + '300 kn', 
+                  "vaze.jpeg":'Vaze' + ' -- ' + '400 kn', 
+                  "velika_zdjela.jpeg":'Kolo' + ' -- ' + '250 kn',
+                  "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
+
+    return render_template('public/gallery.html', page_name=page_name, images_row=images_row)
+
+@public_routes.route('/webshop')
+def webshop():
+    return render_template('public/webshop.html')
+
+
+@public_routes.route('/workshop')
+def workshop():
+    return render_template('public/workshop.html')
 
 
 #ERROR HANDELER 404

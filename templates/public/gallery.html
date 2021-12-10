@@ -2,23 +2,20 @@
 
 <body>
     {% block body %}
-    <section id="hero">
-        <div class="container">
-            <div class="row">
-                <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">{{ page_name }}</h1>
+    <div class="container">
+        <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20">{{ page_name }}</h1>
+        <div class="row">
+            {% for image in images_row %}
+            <div class="col-md-4">
+                {% if image %}
+                <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
+                        class="pulse animated gallery-img"/></a>
+                        <br>
+                        {{ images_row[image] }}
+                {% endif %}   
             </div>
-            <div class="row">
-                {% for image in images_row %}
-                <div class="col-md-4">
-                    {% if image %}
-                    <a href="static/img/{{image}}" data-lightbox="dream"><img src="static/img/{{image}}"
-                            class="pulse animated gallery-img" /></a>
-                            {{ image }}
-                    {% endif %}
-                </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
-    </section>
-    {% endblock %}
+        {% endblock %}
+    </div>
 </body>
