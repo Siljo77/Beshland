@@ -1,7 +1,6 @@
 {% extends 'admin/base.html' %}
 {% block body %}
 <section id="hero">
-    <div class="container">
         {% for message in get_flashed_messages() %}
 
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -25,13 +24,15 @@
 
         </div>
                 <br></br>
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-dark" ><a href="{{url_for('admin_routes.logout')}}">Log Out</button></a>
-        
-            </div>
-            <div class="col">
-                <button type="button" class="btn btn-dark"><a href="{{url_for('admin_routes.update', id=current_user.id) }}">Update Profile</button></a>
+        <dic class=buttons>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-dark" ><a href="{{url_for('admin_routes.logout')}}">Log Out</button></a>
+            
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-dark"><a href="{{url_for('admin_routes.update', id=current_user.id) }}">Update Profile</button></a>
+                </div>
             </div>
         </div>
        
