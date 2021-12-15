@@ -1,7 +1,38 @@
+.centered_1 {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered_2 {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 60%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+}
+
+.centered_3 {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 60%;
+  left: 73%;
+  transform: translate(-50%, -50%);
+}
+
 
 a {
   color: black;
   text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .btn-dark {
@@ -234,6 +265,7 @@ body {
   
 }
 
+
 .customer_logout_link{
   color: black;
   font-size: 20px ;
@@ -263,11 +295,18 @@ body {
 
 .figure-img {
   width: 250px;
+  transition: transform .2s;
 }
 
+.figure-explore-img{
+  width: 250px;
+  height: 400px;
+  padding-top: 50px;
+  filter: brightness(75%);
+}
 
 .pb20 {
-  padding-bottom: 20px;
+  padding-bottom: 75px;
 }
 
 

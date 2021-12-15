@@ -1,7 +1,7 @@
 {% extends 'public/base.html' %}
 {% block body %}
 <section id="hero">
-    <div class="container">
+    <div class="container"></div>
         {% for message in get_flashed_messages() %}
 
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,6 +10,7 @@
         </div>
 
         {% endfor %}
+       
         <div class="User info">
             <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
                 style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px;">{{ page_name }}</h1>
@@ -24,13 +25,15 @@
 
         </div>
                 <br></br>
-        <div class="row">
-            <div class="col">
-                <a class="customer_logout_link" href="{{url_for('public_routes.logout')}}">Log Out</a>
-        
-            </div>
-            <div class="col">
-                <a class="customer_update_link" href="{{url_for('public_routes.update', id=current_user.id) }}">Update Profile</a>
+        <dic class=buttons>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-dark" ><a href="{{url_for('public_routes.logout')}}">Log Out</button></a>
+            
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-dark"><a href="{{url_for('public_routes.update', id=current_user.id) }}">Update Profile</button></a>
+                </div>
             </div>
         </div>
        
