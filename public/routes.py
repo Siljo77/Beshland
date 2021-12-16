@@ -188,12 +188,20 @@ def gallery():
 
 @public_routes.route('/webshop')
 def webshop():
-    return render_template('public/webshop.html')
+    page_name = "Webshop"
+    return render_template('public/webshop.html', page_name=page_name)
 
 
 @public_routes.route('/workshop')
 def workshop():
-    return render_template('public/workshop.html')
+    page_name = 'Workshop'
+    return render_template('public/workshop.html', page_name=page_name)
+
+
+@public_routes.route('/addresses')
+def addresses():
+    page_name = 'My Account'
+    return render_template("/public/addresses.html", page_name=page_name)
 
 
 #ERROR HANDELER 404
@@ -208,7 +216,3 @@ def page_not_found(e):
     return render_template("public/404.html"), 500
 
 
-@public_routes.route('/addresses')
-def addresses():
-    page_name = 'My Account'
-    return render_template("/public/addresses.html", page_name=page_name)
