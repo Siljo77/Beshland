@@ -25,6 +25,9 @@
   transform: translate(-50%, -50%);
 }
 
+p{
+  font-family: Montserrat;
+}
 
 a {
   color: black;
@@ -231,8 +234,6 @@ a:hover{
     font-size: 1em;
   }
 }
-
-
 
 body {
   min-height: 100vh;
