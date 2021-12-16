@@ -2,7 +2,7 @@
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -11,7 +11,7 @@
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 27%;
   transform: translate(-50%, -50%);
 }
@@ -20,7 +20,7 @@
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 73%;
   transform: translate(-50%, -50%);
 }
@@ -308,7 +308,6 @@ body {
 .pb20 {
   padding-bottom: 75px;
 }
-
 
 .type-error {
   color: red;

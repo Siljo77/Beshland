@@ -206,3 +206,9 @@ def page_not_found(e):
 @public_routes.errorhandler(500)
 def page_not_found(e):
     return render_template("public/404.html"), 500
+
+
+@public_routes.route('/addresses')
+def addresses():
+    page_name = 'My Account'
+    return render_template("/public/addresses.html", page_name=page_name)
