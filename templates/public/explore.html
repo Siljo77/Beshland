@@ -1,41 +1,36 @@
+
 {% extends 'public/base.html' %}
 
+
+{% block body %}
 <body>
-    {% block body %}
-<section id="hero">
-    <div class="container">
-        <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+    <section id="hero">
+        <div class="container">
+            <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
                 style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px; font-family:Montserrat">{{ page_name }}</h1>
                 <hr class="hr--small">
-        <div class="row">
-            <div class="col">
-                <a href="{{url_for('public_routes.workshop')}}" h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20"></a>
-                <figure class="figure d-block"><img class="figure-explore-img" data-aos="fade-up" data-aos-delay="400"
-                    data-aos-once="true" src="/static/img/bes_slika.jpeg">
-                    <div><a href="{{url_for('public_routes.workshop')}}" class="centered_2">Workshop</a></div>
-                    <br>
-                    <p>Workshop is a place to relax and express yourself through clay. See a little more about the workshops
-                         and the days when they take place.</p>
-            </div>
-            <div class="col">
-                <a href="{{url_for('public_routes.webshop')}}" h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20"></a>
-                <figure class="figure d-block"><img class="figure-explore-img" data-aos="fade-up" data-aos-delay="400"
-                    data-aos-once="true" src="/static/img/bes_slika2.jpeg">
-                    <div><a href="{{url_for('public_routes.webshop')}}" class="centered_1">Webshop</a></div>
-                    <br>
-                    <p>Webshop is our store where you can see the availability and price of our products.</p>
-            </div>               
-            <div class="col">
-                <a href="{{url_for('public_routes.gallery')}}" h3 data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="pb20"></a>
-                <figure class="figure d-block"><img class="figure-explore-img" data-aos="fade-up" data-aos-delay="400"
-                    data-aos-once="true" src="/static/img/bes_slika3.jpeg">
-                    <div><a href="{{url_for('public_routes.gallery')}}" class="centered_3">Gallery</a></div>
-                    <br>
-                    <p>Galllery are images of our products and space and all the events that take place in BESHLAND. See all the pictures
-                         because maybe your product can be found in the picture.</p>
+            <div class="row">
+                <div class="image">
+                        <figure>
+                            <img src="/static/img/bes_slika.jpeg" alt=''/>
+                        </figure>
+                        <div><a href="{{url_for('public_routes.workshop')}}" class="centered_2">Workshop</a></div>
+                </div>
+                <div class="image">
+                        <figure>
+                            <img src="/static/img/bes_slika2.jpeg" alt=''/>
+                        </figure>
+                        <div><a href="{{url_for('public_routes.workshop')}}" class="centered_1">Webshop</a></div>
+                </div>
+                <div class="image">
+                        <figure>
+                            <img src="/static/img/bes_slika3.jpeg" alt=''/>
+                        </figure>
+                        <div><a href="{{url_for('public_routes.workshop')}}" class="centered_3">Gallery</a></div>
+                </div>
             </div>
         </div>
-    </div>
-</section>\
-{% endblock %}
+    </section>
 </body>
+{% endblock %}
+</html>
