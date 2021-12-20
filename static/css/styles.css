@@ -25,18 +25,18 @@
   transform: translate(-50%, -50%);
 }
 
+
 p{
   font-family: Montserrat;
 }
 
+
+
 a {
   color: black;
-  text-decoration: none;
+  text-decoration:none;
 }
-a:hover{
-  text-decoration: underline;
-  cursor: pointer;
-}
+
 
 .btn-dark {
   color: black;
@@ -123,7 +123,6 @@ a:hover{
 }
 
 
-
 .text {
   position: relative;
   z-index: 10;
@@ -203,6 +202,7 @@ a:hover{
   display: grid;
   align-items: center;
   justify-content: center;
+  background-color: beige;
 }
 
 .menu ul {
@@ -294,6 +294,7 @@ body {
 }
 .pb20 {
   padding-bottom: 75px;
+  font-size: 30px;
 }
 
 .type-error {
@@ -301,10 +302,6 @@ body {
 }
 .type-info {color: green; font-weight: bold; font-size: 2.0em;}
 
-
-.pb20{
-  font-size: 30px;
-}
 
 .image{
   text-align: center;
@@ -323,6 +320,7 @@ figure{
   transform: scale(1);
   transition: 0.3s ease-in-out;
 }
+
 
 .image :hover img{
   transform: scale(1.5)
