@@ -1,0 +1,23 @@
+{% extends 'public/base.html' %}
+
+{% block body %}
+<body>
+    <div id="hero">
+        <div class="container">
+            <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+                style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px; font-family:Montserrat">{{ page_name }}</h1>
+                <hr class="hr--small">
+                <div class="row">
+                    <div class='col'>
+                        <div class="image">
+                                <figure>
+                                    <img src="/static/img/case.jpeg" alt=''/>
+                                    <div><a href="{{url_for('public_routes.workshop')}}" class="centered_2">Workshop</a></div>
+                                </figure>
+                                <br>
+                        </div>
+                    </div>
+                </div>
+                
+</body>
+{% endblock %}

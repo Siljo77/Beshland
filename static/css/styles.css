@@ -2,27 +2,24 @@
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 65%;
-  left: 50%;
   transform: translate(-50%, -50%);
+  padding-bottom: 60px;
 }
 
 .centered_2 {
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 65%;
-  left: 27%;
   transform: translate(-50%, -50%);
+  padding-bottom: 60px;
 }
 
 .centered_3 {
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 65%;
-  left: 73%;
   transform: translate(-50%, -50%);
+  padding-bottom: 60px;
 }
 
 
@@ -224,8 +221,8 @@ a:hover {
 }
 
 .menu ul li a:hover{
-  color: black;
-  transition: 0.2s;
+      color: black;
+    transition: 0.2s;
 }
 
 @media(max-width: 798px) {
@@ -313,12 +310,12 @@ body {
 
 .image{
   text-align: center;
-  
 }
 
 figure{
   overflow: hidden;
-  margin-top: 0 10px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .image img {
