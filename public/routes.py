@@ -228,7 +228,7 @@ def casa_size():
     
 @public_routes.route('/cart')
 def cart():
-    page_name = ""
+    page_name = "Your Cart"
     return render_template('public/cart.html', page_name=page_name) 
 
 

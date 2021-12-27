@@ -349,3 +349,10 @@ figure{
   font-family: Montserrat;
 }
 
+.grid--full {
+  margin-left: 0;
+}
+
+.grid--full>.grid__item {
+  padding-left: 0;
+}

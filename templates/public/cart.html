@@ -1,7 +1,52 @@
 {% extends 'public/base.html' %}
 
 {% block body %}
-
+<body>
+    <div id="hero">
+        <div class="container">
+            <h1 data-aos data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+                style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px; font-family:Montserrat">{{ page_name }}</h1>
+                <div class="row">
+                    <div class="col">
+                        <div></div>
+                    </div>
+                    <div class="col">
+                        <div>Quantity</div>
+                    </div>
+                    <div class="col">
+                        <div>Total</div>
+                    </div>
+                </div>
+                <hr class="hr--small">
+                <input type="number">
+                <hr class="hr--small">
+                <div class="row">
+                    <div class="col">
+                        <div></div>
+                    </div>
+                    <div class="col">
+                        <div>Subtotal</div>
+                    </div>
+                    <div class="col">
+                        <div></div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div></div>
+                    </div>
+                    <div class="col">
+                        <div type="button" class="btn btn-dark"><a href="#"> Uppdate Cart</div></a>
+                    </div>
+                    <div class="col">
+                        <div type="button" class="btn btn-dark"><a href="#">Check Out</div></a>
+                    </div>
+                </div>
+                
+        </div>
+    </div>
+</body>
     
 
 {% endblock %}
