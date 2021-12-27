@@ -225,6 +225,12 @@ def sets():
 def casa_size():
     page_name = ""
     return render_template('public/casa_size.html', page_name=page_name)
+    
+@public_routes.route('/cart')
+def cart():
+    page_name = ""
+    return render_template('public/cart.html', page_name=page_name) 
+
 
 
 #ERROR HANDELER 404
