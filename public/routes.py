@@ -221,6 +221,11 @@ def sets():
     page_name = "Sets"
     return render_template('public/sets.html', page_name=page_name)
 
+@public_routes.route('/casa_size')
+def casa_size():
+    page_name = ""
+    return render_template('public/casa_size.html', page_name=page_name)
+
 
 #ERROR HANDELER 404
 @public_routes.errorhandler(404)

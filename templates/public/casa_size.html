@@ -1,0 +1,41 @@
+{% extends 'public/base.html' %}
+
+{% block body %}
+
+<body>
+    <div id="hero">
+        <div class="container">
+            <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
+                style="font-size: 30px;text-align: center;margin-top: 0px; margin-bottom: 50px; font-family:Montserrat">{{ page_name }}</h1>
+                <hr class="hr--small">
+                <div class="row">
+                    <div class='col'>
+                        <div class="image">
+                            <figure>
+                                <img src="/static/img/bes_casa_1.jpeg" alt='' height="700px"/>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class='col'>
+                        <div class="product_single">
+                            <figure  style="font-size: 30px;text-align: center;">
+                                <h4 class='product_single_title'> Cup size || M</h4>
+                                <br>
+                                  <h6 class='price'>350.00 kn</h6>
+                                  <hr class="hr--small">
+                                <br>
+                                  <h5 class='amount'>Amount</h5>
+                                  <input class="form-control"  placeholder="Enter Amount" required="" type="text" value="">
+                                  <br>
+                                  <div button type="button" class="btn btn-dark" ><a href="">Add to Chart</a></div>
+                                  <br><br>
+                                  <div button type="button" class="btn btn-dark" ><a href="">Buy It Now</a></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

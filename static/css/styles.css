@@ -23,7 +23,7 @@
 }
 
 
-p{
+.col-lg-12 p{
   font-family: Montserrat;
 }
 
@@ -331,4 +331,21 @@ figure{
 }
 
 
+.product{
+  text-align: center;
+}
+
+.figure_blog{
+  height: 700px;
+}
+
+.product_single_title{
+  font-size: 1.2em;
+  font-family: Montserrat;
+}
+
+.price{
+  font-size: 0.8em;
+  font-family: Montserrat;
+}
 
