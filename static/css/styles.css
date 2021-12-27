@@ -1,32 +1,16 @@
-.centered_1 {
+.centered_1 , .centered_2 , .centered_3{
   color: white;
   font-size: 30px;
   position: absolute;
   transform: translate(-50%, -50%);
   padding-bottom: 60px;
-}
-
-.centered_2 {
-  color: white;
-  font-size: 30px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  padding-bottom: 60px;
-}
-
-.centered_3 {
-  color: white;
-  font-size: 30px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  padding-bottom: 60px;
+  font-family: 'Montserrat';
 }
 
 
 .col-lg-12 p{
   font-family: Montserrat;
 }
-
 
 a {
   display: inline-block;
@@ -272,21 +256,10 @@ body {
 }
 
 
-.customer_logout_link{
-  color: black;
-  font-size: 20px ;
-}
-
-
 .customer_update_link {
   font-size: 20px;
   color: black;
   padding-right: 150px;
-}
-
-.customer_logout_link {
-  font-size: 20px;
-  padding-left: 150px;
 }
 
 
@@ -305,8 +278,11 @@ body {
 .type-error {
   color: red;
 }
-.type-info {color: green; font-weight: bold; font-size: 2.0em;}
-
+.type-info {
+  color: green; 
+  font-weight: bold; 
+  font-size: 2.0em;
+}
 
 .image{
   text-align: center;
@@ -335,10 +311,6 @@ figure{
   text-align: center;
 }
 
-.figure_blog{
-  height: 700px;
-}
-
 .product_single_title{
   font-size: 1.2em;
   font-family: Montserrat;
@@ -347,12 +319,4 @@ figure{
 .price{
   font-size: 0.8em;
   font-family: Montserrat;
-}
-
-.grid--full {
-  margin-left: 0;
-}
-
-.grid--full>.grid__item {
-  padding-left: 0;
 }

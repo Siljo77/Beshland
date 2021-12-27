@@ -116,59 +116,28 @@ def wrapReturnMsg(type, error):
     }
 
 
-def _error(updatePage, error, name_to_update):
-    return out(updatePage, wrapReturnMsg("error", error), name_to_update)
-
-
-def _warning(updatePage, error, name_to_update):
-    return out(updatePage,  wrapReturnMsg("warning", error), name_to_update)
-
-
-def _info(updatePage, error, name_to_update):
-    return out(updatePage, wrapReturnMsg("info", error), name_to_update)
-
-
 #Create Uppdate page
 @public_routes.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update(id):
-    
-    updatePage = 'public/update.html'
+    form = UserForm()
+    name_to_update = Users.query.get_or_404(id)
+    if request.method == "POST":
+        name_to_update.name = request.form['name']
+        name_to_update.username = request.form['username']
+        name_to_update.email = request.form['email']
 
-    def error(error):
-        return _error(updatePage, error, False)
-
-    def info(name_to_update, error=False):
-        return _info(updatePage, error, name_to_update)
-
-    if int(id) <= 0 or int(id) != current_user.id:
-        return error("You do not have access to that user")
-
-    if not request.method == 'POST':
-        if request.method == 'GET':
-            name_to_update = Users.query.filter_by(id=id).first()
-            if not name_to_update:
-                return error("nema usera u bazi")
-            return info(name_to_update=name_to_update)
-
-    if not request.form['name']:
-        return error("nema imena")
-
-    name_to_update = Users.query.filter_by(id=id).first()
-    if not name_to_update:
-        return error("nema usera u bazi")
-
-    name_to_update.name = request.form['name']
-    name_to_update.email = request.form['email']
-    name_to_update.username = request.form['username']
-    try:
-        db.session.commit()
-        flash("User uppdated Successfully")
-        return info(name_to_update)
-    except:
-        db.session.commit()
-        flash("Error, Tray Again!")
-        return error(name_to_update)
+        try:
+            db.session.commit()
+            flash("User Updated Successfully")
+            return render_template("public/update.html", form=form,  name_to_update=name_to_update)
+        except:
+            db.session.commit()
+            flash("Error, try again!")
+            return render_template("public/update.html", form=form,  name_to_update=name_to_update)
+    else:
+        return render_template("public/update.html", form=form,  name_to_update=name_to_update, id=id)
+         
 
 
 @public_routes.route('/gallery')
