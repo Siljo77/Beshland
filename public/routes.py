@@ -216,6 +216,12 @@ def chandeliers():
     return render_template('public/chandeliers.html', page_name=page_name)
 
 
+@public_routes.route('/sets')
+def sets():
+    page_name = "Sets"
+    return render_template('public/sets.html', page_name=page_name)
+
+
 #ERROR HANDELER 404
 @public_routes.errorhandler(404)
 def page_not_found(e):
