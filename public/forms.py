@@ -22,7 +22,7 @@ class UpdateForm(FlaskForm):
     name = StringField("Full Name", validators=[DataRequired()])
     username = StringField("Username", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
-    submit = SubmitField("Create Account")  
+    submit = SubmitField("Update Account")  
     
     
 class ProductsForm(FlaskForm):

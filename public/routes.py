@@ -32,8 +32,8 @@ def about():
 def explore():
     page_name = 'Explore'
     images_webshop = "static/img/bes_slika1.jpeg"
-    images_workshop = 'bes_slika3.jpeg'
-    images_gallery =  'bes_slika4.jpeg'
+    images_workshop = "static/img/bes_slika3.jpeg"
+    images_gallery =  "static/img/bes_slika4.jpeg"
     
     return render_template('public/explore.html', page_name=page_name, images_webshop=images_webshop,
                            images_gallery=images_gallery, images_workshop=images_workshop)
@@ -120,14 +120,12 @@ def update(id):
         try:
             db.session.commit()
             flash("User Updated Successfully")
-            return render_template("public/update.html", form=form,  name_to_update=name_to_update)
+            return render_template("public/dashboard.html", form=form,  name_to_update=name_to_update)
         except:
-            db.session.commit()
-            flash("Error, try again!")
+            flash("Failed")
             return render_template("public/update.html", form=form,  name_to_update=name_to_update)
-    else:
-        flash("Error, try_again!")
-        return render_template("public/update.html", form=form,  name_to_update=name_to_update, id=id)
+        
+    return render_template("public/update.html", form=form,  name_to_update=name_to_update, id=id)
          
 
 

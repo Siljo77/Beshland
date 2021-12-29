@@ -192,14 +192,15 @@ def products():
     if form.validate_on_submit():
         user = Products.query.filter_by(name=form.name.data).first()
         if user is None:
-            user = Products(name = form.name.data)
+            user = Products(name = form.name.data, price=form.price.data, amount=form.amount.data)
             db.session.add(user)
             db.session.commit()
         name = form.name.data
         form.name.data = ''
         flash("Product successfully added!")
 
-    return render_template("admin/products.html",form=form, name=name,page_name=page_name)     
+
+    return render_template("admin/products.html",form=form, name=name,page_name=page_name)    
 
 
 #ERROR HANDELER 404
