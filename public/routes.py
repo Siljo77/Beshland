@@ -184,7 +184,9 @@ def addresses():
 @public_routes.route('/cups')
 def cups():
     page_name = "Cups"
-    return render_template('public/cups.html', page_name=page_name)
+    images = ["bes_casa_1.jpeg","bes_casa_2.jpeg","bes_casa_3.jpeg",
+              "bes_casa_4.jpeg","bes_casa_3.jpeg","bes_casa_3.jpeg"]
+    return render_template('public/cups.html', page_name=page_name,images=images)
 
 
 @public_routes.route('/chandeliers')
@@ -206,7 +208,8 @@ def casa_size():
 @public_routes.route('/cart')
 def cart():
     page_name = "Your Cart"
-    return render_template('public/cart.html', page_name=page_name) 
+    return render_template('public/cart.html', page_name=page_name)
+                           
 
 
 

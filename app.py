@@ -16,8 +16,8 @@ app.register_blueprint(admin_routes, url_prefix="/admin")
 startLogin(app)
 initDb(app)
 
-#with app.app_context():
-#    db.create_all()
+#Createwith app.app_context():
+   #db.create_all()
 
 
 @login_manager.user_loader
