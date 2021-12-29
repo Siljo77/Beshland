@@ -3,8 +3,9 @@ from flask import Flask
 from public.routes import public_routes
 from admin.routes import admin_routes
 from admin.login_manager import login_manager, startLogin
-from admin.users import Users, Products
-from db import initDb,db
+from admin.users import Users
+from admin.products import Products
+from db import initDb, db
 from public.routes import index as public_index
 
 template_dir = os.path.abspath('./templates')
@@ -15,8 +16,8 @@ app.register_blueprint(admin_routes, url_prefix="/admin")
 startLogin(app)
 initDb(app)
 
-with app.app_context():
-    db.create_all()
+#with app.app_context():
+#    db.create_all()
 
 
 @login_manager.user_loader

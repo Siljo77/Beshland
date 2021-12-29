@@ -2,7 +2,8 @@ from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
 from public.forms import UserForm, LoginForm, UpdateForm, ProductsForm
-from admin.users import Users, Products
+from admin.users import Users
+from admin.products import Products
 from werkzeug.security import generate_password_hash
 
 
@@ -111,7 +112,7 @@ def add_user():
 def update(id):
     form = UpdateForm()
     name_to_update = Users.query.get_or_404(id)
-    if request.method == "POST":
+    if form.validate_on_submit():
         name_to_update.name = request.form['name']
         name_to_update.username = request.form['username']
         name_to_update.email = request.form['email']
@@ -125,6 +126,7 @@ def update(id):
             flash("Error, try again!")
             return render_template("public/update.html", form=form,  name_to_update=name_to_update)
     else:
+        flash("Error, try_again!")
         return render_template("public/update.html", form=form,  name_to_update=name_to_update, id=id)
          
 
@@ -144,6 +146,7 @@ def gallery():
 
     return render_template('public/gallery.html', page_name=page_name, images_row=images_row)
 
+
 @public_routes.route('/products',methods=['GET', 'POST'])
 def products():
     page_name = 'Add Product'
@@ -152,12 +155,13 @@ def products():
     if form.validate_on_submit():
         user = Products.query.filter_by(name=form.name.data).first()
         if user is None:
-            user = Products(name = form.name.data)
+            user = Products(name = form.name.data, price=form.price.data, amount=form.amount.data)
             db.session.add(user)
             db.session.commit()
         name = form.name.data
         form.name.data = ''
         flash("Product successfully added!")
+
 
     return render_template("public/products.html",form=form, name=name,page_name=page_name) 
 

@@ -2,7 +2,8 @@ from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
 from admin.forms import UpdateForm, UserForm, LoginForm, ProductsForm
-from admin.users import Users, Products
+from admin.users import Users
+from admin.products import Products
 from werkzeug.security import generate_password_hash
 
 
@@ -32,7 +33,6 @@ def about():
     page_name = 'About'
     return render_template('admin/about.html', page_name=page_name)
     
-
 
 #Create Gallery Page
 @admin_routes.route('/gallery')
