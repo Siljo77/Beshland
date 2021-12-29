@@ -15,3 +15,5 @@ class Products2(db.Model, UserMixin):
 
     def __repr__(self):
         return '<Name %r>' % self.name
+    
+

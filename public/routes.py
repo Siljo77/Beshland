@@ -1,7 +1,7 @@
 from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
-from public.forms import UserForm, LoginForm
+from public.forms import UserForm, LoginForm, UpdateForm
 from admin.users import Users
 from werkzeug.security import generate_password_hash
 
@@ -105,28 +105,17 @@ def add_user():
 
 
 
-def out(updatePage, error, name_to_update):
-    return render_template(updatePage, form=UserForm(), name_to_update=name_to_update, error=error)
-
-
-def wrapReturnMsg(type, error):
-    return {
-        "type": type,
-        "error": error
-    }
-
-
 #Create Uppdate page
 @public_routes.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update(id):
-    form = UserForm()
+    form = UpdateForm()
     name_to_update = Users.query.get_or_404(id)
     if request.method == "POST":
         name_to_update.name = request.form['name']
         name_to_update.username = request.form['username']
         name_to_update.email = request.form['email']
-
+    
         try:
             db.session.commit()
             flash("User Updated Successfully")
