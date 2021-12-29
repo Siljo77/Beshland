@@ -1,8 +1,8 @@
 from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
-from admin.forms import UpdateForm, UserForm, LoginForm
-from admin.users import Users
+from admin.forms import UpdateForm, UserForm, LoginForm, ProductsForm
+from admin.users import Users, Products
 from werkzeug.security import generate_password_hash
 
 
@@ -88,6 +88,7 @@ def logout():
     logout_user()
     flash('You Have Been Logged Out!')
     return redirect(url_for('admin_routes.login'))
+
 
 #Create Loign page
 @admin_routes.route('/login', methods=['GET', 'POST'])
@@ -183,6 +184,24 @@ def delete_user(id):
         our_users=our_users)
         
         
+@admin_routes.route('/products',methods=['GET', 'POST'])
+def products():
+    page_name = 'Add Product'
+    name = None
+    form = ProductsForm()
+    if form.validate_on_submit():
+        user = Products.query.filter_by(name=form.name.data).first()
+        if user is None:
+            user = Products(name = form.name.data)
+            db.session.add(user)
+            db.session.commit()
+        name = form.name.data
+        form.name.data = ''
+        flash("Product successfully added!")
+
+    return render_template("admin/products.html",form=form, name=name,page_name=page_name)     
+
+
 #ERROR HANDELER 404
 @admin_routes.errorhandler(404)
 def page_not_found(e):

@@ -1,8 +1,8 @@
 from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
-from public.forms import UserForm, LoginForm, UpdateForm
-from admin.users import Users
+from public.forms import UserForm, LoginForm, UpdateForm, ProductsForm
+from admin.users import Users, Products
 from werkzeug.security import generate_password_hash
 
 
@@ -143,6 +143,23 @@ def gallery():
                   "case.jpeg":'Sarene case' + ' -- ' + '170 kn'}
 
     return render_template('public/gallery.html', page_name=page_name, images_row=images_row)
+
+@public_routes.route('/products',methods=['GET', 'POST'])
+def products():
+    page_name = 'Add Product'
+    name = None
+    form = ProductsForm()
+    if form.validate_on_submit():
+        user = Products.query.filter_by(name=form.name.data).first()
+        if user is None:
+            user = Products(name = form.name.data)
+            db.session.add(user)
+            db.session.commit()
+        name = form.name.data
+        form.name.data = ''
+        flash("Product successfully added!")
+
+    return render_template("public/products.html",form=form, name=name,page_name=page_name) 
 
 @public_routes.route('/webshop')
 def webshop():

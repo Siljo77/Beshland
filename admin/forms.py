@@ -22,3 +22,10 @@ class UpdateForm(FlaskForm):
     name = StringField("Full Name", validators=[DataRequired()])
     username = StringField("Username", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
+    
+    
+class ProductsForm(FlaskForm):
+    name = StringField("Prodact Name")
+    price = StringField("Price", validators=[DataRequired()])
+    amount = StringField("Amount", validators=[DataRequired()])
+    submit = SubmitField("Add Product")

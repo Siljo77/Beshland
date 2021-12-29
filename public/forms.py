@@ -25,6 +25,8 @@ class UpdateForm(FlaskForm):
     submit = SubmitField("Create Account")  
     
     
-
-
-
+class ProductsForm(FlaskForm):
+    name = StringField("Prodact Name")
+    price = StringField("Price", validators=[DataRequired()])
+    amount = StringField("Amount", validators=[DataRequired()])
+    submit = SubmitField("Add Product")
