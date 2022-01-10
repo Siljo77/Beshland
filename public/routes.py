@@ -126,7 +126,6 @@ def update(id):
             return render_template("public/update.html", form=form,  name_to_update=name_to_update)
         
     return render_template("public/update.html", form=form,  name_to_update=name_to_update, id=id)
-         
 
 
 @public_routes.route('/gallery')
@@ -151,10 +150,10 @@ def products():
     name = None
     form = ProductsForm()
     if form.validate_on_submit():
-        user = Products.query.filter_by(name=form.name.data).first()
-        if user is None:
-            user = Products(name = form.name.data, price=form.price.data, amount=form.amount.data)
-            db.session.add(user)
+        product = Users.query.filter_by(name=form.name.data).first()
+        if product is None:
+            product = Products(name = form.name.data, price=form.price.data, amount=form.amount.data)
+            db.session.add(product)
             db.session.commit()
         name = form.name.data
         form.name.data = ''
@@ -198,19 +197,27 @@ def chandeliers():
 @public_routes.route('/sets')
 def sets():
     page_name = "Sets"
-    return render_template('public/sets.html', page_name=page_name)
+    images_row = ["komplet_casa_1.jpeg",
+                  "komplet_casa_2.jpeg",
+                  "komplet_casa_3.jpeg",
+                  "komplet_casa_4.jpeg",
+                  "komplet_casa_5.jpeg",
+                  "komplet_casa_3.jpeg"]
+    
+    return render_template('public/sets.html', page_name=page_name, images_row=images_row)
+
 
 @public_routes.route('/casa_size')
 def casa_size():
     page_name = ""
     return render_template('public/casa_size.html', page_name=page_name)
     
+    
 @public_routes.route('/cart')
 def cart():
     page_name = "Your Cart"
     return render_template('public/cart.html', page_name=page_name)
                            
-
 
 
 #ERROR HANDELER 404

@@ -190,17 +190,38 @@ def products():
     name = None
     form = ProductsForm()
     if form.validate_on_submit():
-        user = Products.query.filter_by(name=form.name.data).first()
-        if user is None:
-            user = Products(name = form.name.data, price=form.price.data, amount=form.amount.data)
-            db.session.add(user)
+        product = Products.query.filter_by(name=form.name.data).first()
+        if product is None:
+            product = Products(name = form.name.data, price=form.price.data, amount=form.amount.data)
+            db.session.add(product)
             db.session.commit()
         name = form.name.data
         form.name.data = ''
         flash("Product successfully added!")
 
 
-    return render_template("admin/products.html",form=form, name=name,page_name=page_name)    
+    return render_template("admin/products.html",form=form, name=name,page_name=page_name)  
+
+
+@admin_routes.route('/update_product/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update_product(id):
+    form = ProductsForm()
+    amount_to_update = Products.query.get_or_404(id)
+    if request.method == "POST":
+        amount_to_update.amount = request.form['amount']
+        
+        try:
+            db.session.commit()
+            flash("User Updated Successfully")
+            return render_template("admin/update_product.html", form=form,  amount_to_update=amount_to_update)
+        except:
+            db.session.commit()
+            flash("Error, try again!")
+            return render_template("admin/update_product.html", form=form,  amount_to_update=amount_to_update)
+        
+    else:
+        return render_template("admin/update_product.html", form=form, amount_to_update=amount_to_update, id=id)
 
 
 #ERROR HANDELER 404

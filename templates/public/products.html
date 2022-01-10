@@ -14,14 +14,6 @@
         {% if name %}
         <h1>User Added {{ name }}</h1>
         <br /><br />
-        {% for our_users in our_users %}
-
-        {{ our_users.id }}.<a href="{{url_for('admin_routes.update', id=our_users.id) }}">
-            {{ our_users.name }}</a> - {{ our_users.email }} 
-            <a href="{{url_for('admin_routes.delete_user', id=our_users.id) }}">Delete</a><br />
-           
-
-        {% endfor %}
 
         {% else %}
         <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
