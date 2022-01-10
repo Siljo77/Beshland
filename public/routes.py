@@ -1,7 +1,7 @@
 from db import db
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, logout_user, login_user,current_user
-from public.forms import UserForm, LoginForm, UpdateForm, ProductsForm
+from public.forms import UserForm, LoginForm, UpdateForm, ProductsForm, UpdateProductsForm
 from admin.users import Users
 from admin.products import Products
 from werkzeug.security import generate_password_hash
@@ -26,7 +26,6 @@ def about():
     return render_template('public/about.html', page_name=page_name)
 
 
-#Create Gallery Page
 #Create Gallery Page
 @public_routes.route('/explore')
 def explore():
@@ -166,7 +165,7 @@ def products():
 @public_routes.route('/update_product/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_product(id):
-    form = ProductsForm()
+    form = UpdateProductsForm()
     amount_to_update = Products.query.get_or_404(id)
     if request.method == "POST":
         amount_to_update.amount = request.form['amount']
@@ -174,7 +173,7 @@ def update_product(id):
         try:
             db.session.commit()
             flash("User Updated Successfully")
-            return render_template("public/update_product.html", form=form,  amount_to_update=amount_to_update)
+            return render_template("public/products.html", form=form,  amount_to_update=amount_to_update)
         except:
             db.session.commit()
             flash("Error, try again!")

@@ -29,3 +29,7 @@ class ProductsForm(FlaskForm):
     price = StringField("Price", validators=[DataRequired()])
     amount = StringField("Amount", validators=[DataRequired()])
     submit = SubmitField("Add Product")
+    
+class UpdateProductsForm(FlaskForm):
+    amount = StringField("Amount", validators=[DataRequired()])
+    submit = SubmitField("Update Product")
