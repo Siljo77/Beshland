@@ -1,0 +1,48 @@
+{% extends 'public/base.html' %}
+
+{% block body %}
+
+<section id="hero">
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Hey {{name}} {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor %}
+        {% if id == current_product.id %}
+        <h1>Update Product</h1>
+        
+
+         <form action="/public/update_product/{{ amount_to_update.id }}" method="POST">
+
+            {{ form.hidden_tag() }}
+
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control", placeholder="Name", value= amount_to_update.name) }}
+            <br />
+            
+            {{ form.price.label(class="form-label") }}
+            {{ form.price(class="form-control",placeholder="Price", value= amount_to_update.price) }}
+            <br />
+
+            {{ form.amount.label(class="form-label") }}
+            {{ form.amount(class="form-control",placeholder="Amount", value= amount_to_update.amount) }}
+            <br />
+
+            {{ form.submit(
+            class="btn btn-dark") }}
+    </div>
+    {% else %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Hey, {{name}} {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    {% endif %}
+    <a href="{{url_for('public_routes.update_product', id=id) }}" class="btn btn-danger">Delete</a>
+</section>
+
+{% endblock %}

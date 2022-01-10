@@ -50,11 +50,11 @@
         {% for our_products in our_products %}
         <div class="row">
             <div class="col">
-                {{ our_products.id }}. <a href="{{url_for('admin_routes.update', id=our_users.id) }}">
+                {{ our_products.id }}. <a href="{{url_for('admin_routes.products', id=our_users.id) }}">
                 {{ our_products.name }}</a> - {{ our_products.price }} - {{ our_products.amount }} 
             </div> 
             <div class="col">
-                <a href="{{url_for('admin_routes.update_product', id=our_products.id) }}" style="padding-left:35px;">Delete</a><br />
+                <a href="{{url_for('admin_routes.products', id=our_products.id) }}" style="padding-left:35px;">Delete</a><br />
             </div> 
         </div> 
         {% endfor %}
