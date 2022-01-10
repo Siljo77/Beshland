@@ -1,4 +1,4 @@
-{% extends 'public/base.html' %}
+{% extends 'admin/base.html' %}
 {% block body %}
 <section id="hero">
     <div class="container">
@@ -11,9 +11,17 @@
 
         {% endfor %}
 
-        {% if name %}
+        {% if product %}
         <h1>User Added {{ name }}</h1>
         <br /><br />
+        {% for our_products in our_products %}
+
+        {{ our_products.id }}.<a href="{{url_for('admin_routes.update', id=our_users.id) }}">
+            {{ our_products.name }}</a> - {{ our_products.price }} 
+            <a href="{{url_for('admin_routes.update_product', id=our_products.id) }}">Delete</a><br />
+           
+
+        {% endfor %}
 
         {% else %}
         <h1 data-aos="fade-up" data-aos-delay="150" data-aos-once="true"
@@ -23,11 +31,11 @@
             {{ form.hidden_tag() }}
 
             {{ form.name.label(class="form-label") }}
-            {{ form.name(class="form-control", placeholder="Product") }}
+            {{ form.name(class="form-control", placeholder="Name") }}
             <br />
 
             {{ form.price.label(class="form-label") }}
-            {{ form.price(class="form-control", placeholder="Product Price") }}
+            {{ form.price(class="form-control", placeholder="Price") }}
             <br />
 
             {{ form.amount.label(class="form-label") }}
@@ -39,10 +47,19 @@
         </form>
 
         <br /><br />
-      
+        {% for our_products in our_products %}
+        <div class="row">
+            <div class="col">
+                {{ our_products.id }}. <a href="{{url_for('admin_routes.update', id=our_users.id) }}">
+                {{ our_products.name }}</a> - {{ our_products.price }} - {{ our_products.amount }} 
+            </div> 
+            <div class="col">
+                <a href="{{url_for('admin_routes.update_product', id=our_products.id) }}" style="padding-left:35px;">Delete</a><br />
+            </div> 
+        </div> 
+        {% endfor %}
 
         {% endif %} 
     </div>
 </section>
 {% endblock %}
-
