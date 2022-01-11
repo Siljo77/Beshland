@@ -13,9 +13,10 @@
                         <div class="image">
                             {% if image %}
                             <figure>
-                                <a href="{{url_for('public_routes.cart')}}"><img src="/static/img/{{image}}"></a>
+                                <a href="{{url_for('public_routes.cup_size')}}"><img src="/static/img/{{image}}"></a>
                                     <br>
                             </figure>
+                            <span >{{ images[image] }}</span>
                             {% endif %}
                             <br><br>
                         </div>
