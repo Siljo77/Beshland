@@ -235,8 +235,12 @@ def sets():
 @public_routes.route('/cup_size')
 def cup_size():
     page_name = ""
-    images = ["bes_casa_1.jpeg","bes_casa_2.jpeg","bes_casa_3.jpeg",
-              "bes_casa_4.jpeg","bes_casa_3.jpeg","bes_casa_3.jpeg"]
+    images = {"bes_casa_1.jpeg": "Cup | Size S",
+              "bes_casa_2.jpeg": "Cup | Size L",
+              "bes_casa_3.jpeg": "Cup | Size M",
+              "bes_casa_4.jpeg": "Cup | Size L",
+              "bes_casa_3.jpeg": "Cup | Size M",
+              "bes_casa_3.jpeg": "Cup | Size M"}
     return render_template('public/cup_size.html', page_name=page_name,images=images)
     
     
